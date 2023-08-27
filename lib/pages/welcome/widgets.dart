@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
+import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 
 Widget appOnboardingPage(
   PageController controller, {
@@ -8,6 +9,7 @@ Widget appOnboardingPage(
   String title = '',
   String subtitle = '',
   index = 0,
+  required BuildContext context,
 }) {
   return Column(
     children: [
@@ -30,12 +32,12 @@ Widget appOnboardingPage(
         ),
         child: text16Normal(text: subtitle),
       ),
-      _nextButton(index, controller),
+      _nextButton(index, controller, context),
     ],
   );
 }
 
-Widget _nextButton(int index, PageController controller) {
+Widget _nextButton(int index, PageController controller, BuildContext context) {
   return GestureDetector(
     onTap: () {
       if (index < 3) {
@@ -43,6 +45,12 @@ Widget _nextButton(int index, PageController controller) {
           index,
           duration: const Duration(milliseconds: 300),
           curve: Curves.linear,
+        );
+      } else {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (BuildContext context) => const SignIn(),
+          ),
         );
       }
     },

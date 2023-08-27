@@ -1,7 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ulearning_app/pages/notifier/welcome_notifier.dart';
+import './notifier/welcome_notifier.dart';
 import 'package:ulearning_app/pages/welcome/widgets.dart';
 
 //final indexProvider = StateProvider<int>((ref) => 0);
@@ -14,7 +14,7 @@ class Welcome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-   // print('my dots value is $dotsIndex');
+    // print('my dots value is $dotsIndex');
     final index = ref.watch(indexDotProvider);
     return Container(
       color: Colors.white,
@@ -31,7 +31,7 @@ class Welcome extends ConsumerWidget {
                   child: PageView(
                     onPageChanged: (value) {
                       print('---my index value is $value');
-                    //  dotsIndex = value;
+                      //  dotsIndex = value;
                       ref.read(indexDotProvider.notifier).changeIndex(value);
                     },
                     controller: _controller,
@@ -44,6 +44,7 @@ class Welcome extends ConsumerWidget {
                         subtitle:
                             'Forget about the paper, now learning all in one place',
                         index: 1,
+                        context: context,
                       ),
                       appOnboardingPage(
                         _controller,
@@ -52,6 +53,7 @@ class Welcome extends ConsumerWidget {
                         subtitle:
                             "Always keep in touch with your tutor and friends. Let's get connected",
                         index: 2,
+                        context: context,
                       ),
                       appOnboardingPage(
                         _controller,
@@ -60,6 +62,7 @@ class Welcome extends ConsumerWidget {
                         subtitle:
                             'Anywhere, anytime. The time is at your discretion. So study whenever you are',
                         index: 3,
+                        context: context,
                       ),
                     ],
                   ),
