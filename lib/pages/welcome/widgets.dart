@@ -47,11 +47,16 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
           curve: Curves.linear,
         );
       } else {
-        Navigator.of(context).push(
-          MaterialPageRoute(
+         Navigator.pushNamed (
+          context,
+          "/signIn",
+        );
+       /* Navigator.push (
+          context,
+          MaterialPageRoute (
             builder: (BuildContext context) => const SignIn(),
           ),
-        );
+        );*/
       }
     },
     child: Container(
@@ -63,7 +68,10 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
         right: 25,
       ),
       decoration: appBoxShadow(),
-      child: Center(child: text16Normal(text: 'Next', color: Colors.white)),
+      child: Center(
+        child: text16Normal(
+            text: index < 3 ? "next" : "Get started", color: Colors.white),
+      ),
     ),
   );
 }
