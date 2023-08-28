@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
+import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 
 /*
@@ -47,6 +48,27 @@ Widget _loginButton(String imagePath) {
       height: 40.h,
       width: 40.w,
       child: Image.asset(imagePath),
+    ),
+  );
+}
+
+Widget appTextField({String text = '',String iconName=''}) {
+  return Container(
+    padding: EdgeInsets.only(left: 25.w, right: 25.w),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        text14Normal(text: text),
+        Container(
+          width: 325.w,
+          height: 50.h,
+          //color: Colors.red,
+          decoration: appBoxDecorationTextField(),
+          child: Row(
+            
+          ),
+        )
+      ],
     ),
   );
 }

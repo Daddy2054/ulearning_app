@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/sign_in/sign_in.dart';
 
 Widget appOnboardingPage(
   PageController controller, {
