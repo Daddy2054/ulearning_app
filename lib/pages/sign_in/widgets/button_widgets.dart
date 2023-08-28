@@ -14,8 +14,10 @@ Widget appButton({
       width: width,
       height: height,
       decoration: appBoxShadow(
-        color: isLogin ? AppColors.primaryElement : Colors.white,
-      ),
+          color: isLogin ? AppColors.primaryElement : Colors.white,
+          border: Border.all(
+            color: AppColors.primaryFourthElementText,
+          )),
       child: Center(
         child: text16Normal(
           text: buttonName,
