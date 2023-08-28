@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 import 'package:ulearning_app/pages/sign_in/widgets/button_widgets.dart';
-import 'package:ulearning_app/pages/sign_in/widgets/sign_in_widgets.dart';
 
 import '../../common/widgets/app_bar.dart';
 import '../../common/widgets/app_textfields.dart';
@@ -21,10 +20,12 @@ class SignUp extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-SizedBox(height: 30.h,),
+                SizedBox(
+                  height: 30.h,
+                ),
                 Center(
-                  child:
-                      text14Normal(text: 'Enter your details below & free sign up'),
+                  child: text14Normal(
+                      text: 'Enter your details below & free sign up'),
                 ),
                 SizedBox(
                   height: 50.h,
@@ -36,7 +37,8 @@ SizedBox(height: 30.h,),
                 ),
                 SizedBox(
                   height: 20.h,
-                ),     appTextField(
+                ),
+                appTextField(
                   text: 'Email',
                   iconName: 'assets/icons/user.png',
                   hintText: 'Enter your email address',
@@ -49,7 +51,8 @@ SizedBox(height: 30.h,),
                   iconName: 'assets/icons/lock.png',
                   hintText: 'Enter your password',
                   obscureText: true,
-                ),     SizedBox(
+                ),
+                SizedBox(
                   height: 20.h,
                 ),
                 appTextField(
@@ -60,18 +63,21 @@ SizedBox(height: 30.h,),
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 25.w, top: 20.h),
-                  child: text14Normal(text: 'By creating an account you are agreeing with our terms and conditions'),
+                  child: text14Normal(
+                      text:
+                          'By creating an account you are agreeing with our terms and conditions'),
                 ),
                 SizedBox(
                   height: 100.h,
                 ),
-              
+
                 // app register button
                 Center(
                   child: appButton(
                     buttonName: 'Register',
                     isLogin: true,
                     context: context,
+                
                   ),
                 ),
               ],

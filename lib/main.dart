@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/utils/app_styles.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in.dart';
+import 'package:ulearning_app/pages/sign_up/sign_up.dart';
 import 'package:ulearning_app/pages/welcome/welcome.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.appThemeData,
         routes: {
           "/": (context) => Welcome(),
-          "/signIn": (context) => const SignIn()
+          "/signIn": (context) => const SignIn(),
+          "/register": (context) => const SignUp()
         },
       ),
     );
@@ -63,21 +65,21 @@ class MyHomePage extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           FloatingActionButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) => const SecondPage(),
-                ),
-              );
-            },
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) => const SecondPage(),
+              ),
+            ),
             tooltip: 'Increment',
             child: const Icon(Icons.arrow_right_alt_outlined),
           ),
           FloatingActionButton(
             heroTag: null,
-            onPressed: () {
-              ref.read(appCount.notifier).state++;
-            },
+            onPressed: () => ref.read(appCount.notifier).state++,
+
+            // onPressed: () {
+            //   print('hello');
+            // },
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),

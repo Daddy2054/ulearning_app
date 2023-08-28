@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/sign_up/sign_up.dart';
 
 Widget appButton({
   String buttonName = '',
@@ -10,13 +9,15 @@ Widget appButton({
   double height = 50,
   bool isLogin = true,
   BuildContext? context,
+  void Function()? func,
 }) {
   return GestureDetector(
     onTap: () {
-      Navigator.push(
-        context!,
-        MaterialPageRoute(builder: (context) => const SignUp()),
-      );
+      if (func == null) {
+        print('this handler is null');
+      } else {
+        func();
+      }
     },
     child: Container(
       width: width,

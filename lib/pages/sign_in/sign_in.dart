@@ -10,6 +10,10 @@ import '../../common/widgets/app_textfields.dart';
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
 
+  void handleRegister() {
+    print('register');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,6 +66,7 @@ class SignIn extends StatelessWidget {
                     buttonName: 'Register',
                     isLogin: false,
                     context: context,
+                    func: () => Navigator.pushNamed(context, '/register'),
                   ),
                 ),
               ],
