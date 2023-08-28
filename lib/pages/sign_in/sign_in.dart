@@ -39,6 +39,10 @@ class SignIn extends StatelessWidget {
                 hintText: 'Enter your password',
                 obscureText: true,
               ),
+              Container(
+                margin: EdgeInsets.only(left: 25.w, top: 20.h),
+                child: textUnderLine(text: 'Forgot password?'),
+              ),
             ],
           ),
         ),
