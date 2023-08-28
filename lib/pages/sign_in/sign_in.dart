@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
+import 'package:ulearning_app/pages/sign_in/widgets/button_widgets.dart';
 import 'package:ulearning_app/pages/sign_in/widgets/sign_in_widgets.dart';
 
 class SignIn extends StatelessWidget {
@@ -42,6 +43,21 @@ class SignIn extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(left: 25.w, top: 20.h),
                 child: textUnderLine(text: 'Forgot password?'),
+              ),
+              SizedBox(
+                height: 100.h,
+              ),
+              // app login button
+              Center(child: appButton(buttonName: 'Login')),
+              SizedBox(
+                height: 20.h,
+              ),
+              // app register button
+              Center(
+                child: appButton(
+                  buttonName: 'Register',
+                  isLogin: false,
+                ),
               ),
             ],
           ),
