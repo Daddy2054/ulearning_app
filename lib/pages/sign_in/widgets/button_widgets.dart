@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/sign_in/widgets/sign_in_widgets.dart';
+import 'package:ulearning_app/pages/sign_up/sign_up.dart';
 
 Widget appButton({
   String buttonName = '',
@@ -15,15 +15,7 @@ Widget appButton({
     onTap: () {
       Navigator.push(
         context!,
-        MaterialPageRoute(
-          builder: (context) => Scaffold(
-            appBar: buildAppBar(),
-            body: Container(
-              color: Colors.white,
-            ),
-            backgroundColor: Colors.white,
-          ),
-        ),
+        MaterialPageRoute(builder: (context) => const SignUp()),
       );
     },
     child: Container(

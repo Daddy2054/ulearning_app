@@ -1,28 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/utils/app_colors.dart';
-import 'package:ulearning_app/common/widgets/app_shadow.dart';
-import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/sign_in/widgets/image_widgets.dart';
 
 /*
   preferredSize widget gives you a height or space from the appbar downwords and we can
   put child in the given space
 
  */
-AppBar buildAppBar() {
-  return AppBar(
-    title: text16Normal(text: 'Login', color: AppColors.primaryText),
-    centerTitle: true,
-    bottom: PreferredSize(
-      preferredSize: const Size.fromHeight(1),
-      child: Container(
-        color: Colors.grey.withOpacity(0.5),
-        height: 1,
-      ),
-    ),
-  );
-}
+
 
 Widget thirtPartyLogin() {
   return Container(
@@ -49,64 +33,6 @@ Widget _loginButton(String imagePath) {
       height: 40.h,
       width: 40.w,
       child: Image.asset(imagePath),
-    ),
-  );
-}
-
-Widget appTextField({
-  String text = '',
-  String iconName = '',
-  String hintText = 'Type in your info',
-  bool obscureText = false,
-}) {
-  return Container(
-    padding: EdgeInsets.only(left: 25.w, right: 25.w),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        text14Normal(text: text),
-        SizedBox(
-          height: 5.h,
-        ),
-        Container(
-          width: 325.w,
-          height: 50.h,
-          //color: Colors.red,
-          decoration: appBoxDecorationTextField(),
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.only(left: 17.w),
-                child: appImage(imagePath: iconName),
-              ),
-              SizedBox(
-                width: 280.w,
-                height: 50.h,
-                child: TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    hintText: hintText,
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                      ),
-                    ),
-                  ),
-                  onChanged: (value) {},
-                  maxLines: 1,
-                  autocorrect: false,
-                  obscureText: obscureText,
-                ),
-              )
-            ],
-          ),
-        )
-      ],
     ),
   );
 }

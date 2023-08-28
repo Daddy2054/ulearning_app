@@ -38,7 +38,7 @@ Widget text14Normal({
 }) {
   return Text(
     text,
-    textAlign: TextAlign.center,
+    textAlign: TextAlign.start,
     style: TextStyle(
       color: color,
       fontSize: 16,
@@ -47,7 +47,7 @@ Widget text14Normal({
   );
 }
 
-Widget textUnderLine({String text='Your text'}) {
+Widget textUnderLine({String text = 'Your text'}) {
   return GestureDetector(
     onTap: () {},
     child: Text(
