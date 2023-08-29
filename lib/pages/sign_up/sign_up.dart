@@ -4,15 +4,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 import 'package:ulearning_app/pages/sign_in/widgets/button_widgets.dart';
 import 'package:ulearning_app/pages/sign_up/notifier/register_notifier.dart';
+import 'package:ulearning_app/pages/sign_up/sign_up_controller.dart';
 
 import '../../common/widgets/app_bar.dart';
 import '../../common/widgets/app_textfields.dart';
 
-class SignUp extends ConsumerWidget {
+class SignUp extends ConsumerStatefulWidget {
   const SignUp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends ConsumerState<SignUp> {
+  late SignUpController _controller;
+
+  @override
+  void initState() {
+    _controller = SignUpController(ref: ref);
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final regProvider = ref.watch(registerNotifierProvider);
 
     return Container(
@@ -62,7 +77,9 @@ class SignUp extends ConsumerWidget {
                   iconName: 'assets/icons/lock.png',
                   hintText: 'Enter your password',
                   obscureText: true,
-                  func: (value) => print(value),
+               func: (value) => ref
+                      .read(registerNotifierProvider.notifier)
+                      .onUserPasswordChange(value),
                 ),
                 SizedBox(
                   height: 20.h,
@@ -72,7 +89,9 @@ class SignUp extends ConsumerWidget {
                   iconName: 'assets/icons/lock.png',
                   hintText: 'Confirm your password',
                   obscureText: true,
-                  func: (value) => print(value),
+                    func: (value) => ref
+                      .read(registerNotifierProvider.notifier)
+                      .onUserRePasswordChange(value),
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 25.w, top: 20.h),
@@ -87,10 +106,10 @@ class SignUp extends ConsumerWidget {
                 // app register button
                 Center(
                   child: appButton(
-                    buttonName: 'Register',
-                    isLogin: true,
-                    context: context,
-                  ),
+                      buttonName: 'Register',
+                      isLogin: true,
+                      context: context,
+                      func: () => _controller.handleSignUp()),
                 ),
               ],
             ),
