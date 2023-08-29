@@ -34,7 +34,7 @@ class _SignUpState extends ConsumerState<SignUp> {
       color: Colors.white,
       child: SafeArea(
         child: Scaffold(
-          appBar: buildAppBar(),
+          appBar: buildAppBar(title: 'Sign Up'),
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Column(

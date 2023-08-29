@@ -19,7 +19,7 @@ class SignIn extends StatelessWidget {
     return Container(
       child: SafeArea(
         child: Scaffold(
-          appBar: buildAppBar(),
+          appBar: buildAppBar(title: 'Login'),
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Column(
