@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
+import 'package:ulearning_app/pages/sign_in/notifier/sign_in_notifier.dart';
+import 'package:ulearning_app/pages/sign_in/sign_in_controller.dart';
 import 'package:ulearning_app/pages/sign_in/widgets/button_widgets.dart';
 import 'package:ulearning_app/pages/sign_in/widgets/sign_in_widgets.dart';
 
 import '../../common/widgets/app_bar.dart';
 import '../../common/widgets/app_textfields.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends ConsumerStatefulWidget {
   const SignIn({super.key});
 
-  void handleRegister() {
-    print('register');
+  @override
+  ConsumerState<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends ConsumerState<SignIn> {
+  late SignInController _controller;
+
+  @override
+  void initState() {
+    _controller = SignInController(ref);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final signInProvider = ref.watch(signInNotifierProvider);
     return Container(
       child: SafeArea(
         child: Scaffold(
@@ -38,6 +51,9 @@ class SignIn extends StatelessWidget {
                   text: 'Email',
                   iconName: 'assets/icons/user.png',
                   hintText: 'Enter your email address',
+                  func: (value) => ref
+                      .read(signInNotifierProvider.notifier)
+                      .onUserEmailChange(value),
                 ),
                 SizedBox(
                   height: 20.h,
@@ -47,6 +63,9 @@ class SignIn extends StatelessWidget {
                   iconName: 'assets/icons/lock.png',
                   hintText: 'Enter your password',
                   obscureText: true,
+                  func: (value) => ref
+                      .read(signInNotifierProvider.notifier)
+                      .onUserPasswordChange(value),
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 25.w, top: 20.h),
@@ -56,7 +75,12 @@ class SignIn extends StatelessWidget {
                   height: 100.h,
                 ),
                 // app login button
-                Center(child: appButton(buttonName: 'Login')),
+                Center(
+                  child: appButton(
+                    buttonName: 'Login',
+                    func: () => _controller.handleSignIn(),
+                  ),
+                ),
                 SizedBox(
                   height: 20.h,
                 ),
