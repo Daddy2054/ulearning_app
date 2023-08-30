@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/pages/sign_up/notifier/register_notifier.dart';
 
 import '../../common/widgets/popup_messages.dart';
@@ -49,25 +50,34 @@ class SignUpController {
       return;
     }
 
-    var context = Navigator.of(ref.context);
-    try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      if (kDebugMode) {
-        print(credential);
+//show the loading icon
+    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
+    Future.delayed(const Duration(seconds: 2), () async {
+      var context = Navigator.of(ref.context);
+      try {
+        final credential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        if (kDebugMode) {
+          print(credential);
+        }
+        if (credential.user != null) {
+          await credential.user?.sendEmailVerification();
+          await credential.user?.updateDisplayName(name);
+          //get server photo url
+          //set user photo url
+          toastInfo(
+              'A message has been sent to verify your account.Please open that and email');
+          (context).pop();
+        }
+      } catch (e) {
+        if (kDebugMode) {
+          e.toString();
+        }
+        ref.watch(appLoaderProvider.notifier).setLoaderValue(false);
       }
-      if (credential.user != null) {
-        await credential.user?.sendEmailVerification();
-        await credential.user?.updateDisplayName(name);
-        //get server photo url
-        //set user photo url
-        toastInfo(
-            'A message has been sent to verify your account.Please open that and email');
-        (context).pop();
-      }
-    } catch (e) {}
+    });
   }
 }
