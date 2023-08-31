@@ -33,7 +33,6 @@ class SignInController {
       return;
     }
     ref.read(appLoaderProvider.notifier).setLoaderValue(true);
-    print('0');
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
@@ -41,9 +40,11 @@ class SignInController {
       );
       if (credential.user == null) {
         toastInfo('User not found');
+        return;
       }
       if (!credential.user!.emailVerified) {
         toastInfo('You must verify your email address first!');
+        return;
       }
 
       var user = credential.user;
