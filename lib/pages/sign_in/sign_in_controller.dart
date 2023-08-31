@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/entities/user.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
@@ -11,10 +13,16 @@ class SignInController {
 
   SignInController(this.ref);
 
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   Future<void> handleSignIn() async {
     var state = ref.read(signInNotifierProvider);
     String email = state.email;
     String password = state.password;
+
+    emailController.text = email;
+    passwordController.text = password;
 
     if (state.email.isEmpty || email.isEmpty) {
       toastInfo("Your email is empty");
@@ -56,7 +64,17 @@ class SignInController {
       } else {
         toastInfo('Login error');
       }
-    } catch (e) {}
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        toastInfo("User not found");
+      } else if (e.code == 'wrong-password') {
+        toastInfo("Your password is wrong");
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+    }
     ref.read(appLoaderProvider.notifier).setLoaderValue(false);
   }
 

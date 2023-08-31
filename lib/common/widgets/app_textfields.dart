@@ -7,6 +7,7 @@ import 'app_shadow.dart';
 import 'text_widgets.dart';
 
 Widget appTextField({
+  TextEditingController? controller,
   String text = '',
   String iconName = '',
   String hintText = 'Type in your info',
@@ -37,6 +38,7 @@ Widget appTextField({
                 width: 280.w,
                 height: 50.h,
                 child: TextField(
+                  controller: controller,
                   onChanged: (value) =>func!(value),
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
