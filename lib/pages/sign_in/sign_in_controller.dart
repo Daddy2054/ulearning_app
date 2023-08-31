@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_app/common/entities/user.dart';
+import 'package:ulearning_app/common/global_loader/global_loader.dart';
 
 import '../../common/widgets/popup_messages.dart';
 import './notifier/sign_in_notifier.dart';
@@ -22,7 +24,8 @@ class SignInController {
       toastInfo("Your password is empty");
       return;
     }
-
+    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
+    print('0');
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
@@ -40,8 +43,25 @@ class SignInController {
         String? displayName = user.displayName;
         String? email = user.email;
         String? id = user.uid;
-        String? photoUrl = user.photoURL; 
+        String? photoUrl = user.photoURL;
+
+        LoginRequestEntity loginRequestEntity = LoginRequestEntity();
+        loginRequestEntity.avatar = photoUrl;
+        loginRequestEntity.name = displayName;
+        loginRequestEntity.email = email;
+        loginRequestEntity.open_id = id;
+        loginRequestEntity.type = 1;
+        asyncPostAllData(loginRequestEntity);
+        print('user logged in');
+      } else {
+        toastInfo('Login error');
       }
     } catch (e) {}
+    ref.read(appLoaderProvider.notifier).setLoaderValue(false);
+  }
+
+  void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
+    ref.read(appLoaderProvider.notifier).setLoaderValue(true);
+    ref.read(appLoaderProvider.notifier).setLoaderValue(false);
   }
 }
