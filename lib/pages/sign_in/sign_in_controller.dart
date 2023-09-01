@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/entities/user.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
+import 'package:ulearning_app/common/utils/constants.dart';
 
 import '../../common/widgets/popup_messages.dart';
+import '../../global.dart';
 import './notifier/sign_in_notifier.dart';
 
 class SignInController {
@@ -82,8 +84,32 @@ class SignInController {
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
     // ref.read(appLoaderProvider.notifier).setLoaderValue(true);
     // ref.read(appLoaderProvider.notifier).setLoaderValue(false);
+
     //we need to talk to server
     //have local storage
+
+    try {
+      var navigator = Navigator.of(ref.context);
+      //try to remember user info
+      Global.storageService
+          .setString(AppConstants.STORAGE_USER_PROFILE_KEY, '123');
+      Global.storageService
+          .setString(AppConstants.STORAGE_USER_TOKEN_KEY, '12345');
+
+      // navigator.pushNamedAndRemoveUntil(newRouteName, (route) => false)
+      navigator.push(
+        MaterialPageRoute(
+          builder: (BuildContext context) => Scaffold(
+            appBar: AppBar(),
+            body: Container(),
+          ),
+        ),
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+    }
     // redirect to new page
   }
 }
