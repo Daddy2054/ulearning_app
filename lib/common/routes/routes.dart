@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../global.dart';
 import '../../pages/application/application.dart';
 import '../../pages/sign_in/sign_in.dart';
 import '../../pages/sign_up/sign_up.dart';
@@ -21,10 +22,15 @@ class AppPages {
     if (kDebugMode) {
       print("clicked route is ${settings.name}");
     }
+    if (settings.name != null) {
+      var result = routes().where((element) => element.path == settings.name);
+      //if we used this is first time  or not
+      bool deviceFirstTime = Global.storageService.getDeviceFirstOpen();
+
+      if (result.first.path == AppRoutesNames.WELCOME && deviceFirstTime) {}
+    }
     return MaterialPageRoute(
-      builder: (_) => Scaffold(
-        body: Container(),
-      ),
+      builder: (_) => Welcome(),
       settings: settings,
     );
   }
@@ -33,5 +39,8 @@ class AppPages {
 class RouteEntity {
   String path;
   Widget page;
-  RouteEntity({required this.path, required this.page});
+  RouteEntity({
+    required this.path,
+    required this.page,
+  });
 }

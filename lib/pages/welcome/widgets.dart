@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 
+import '../../common/utils/constants.dart';
+import '../../global.dart';
+
 Widget appOnboardingPage(
   PageController controller, {
   String imagePath = 'assets/images/reading.png',
@@ -46,11 +49,17 @@ Widget _nextButton(int index, PageController controller, BuildContext context) {
           curve: Curves.linear,
         );
       } else {
-         Navigator.pushNamed (
+        //remember if we are first time or not
+        Global.storageService.setBool(
+          AppConstants.STORAGE_DEVICE_OPEN_FIRST_KEY,
+          true,
+        );
+
+        Navigator.pushNamed(
           context,
           "/signIn",
         );
-       /* Navigator.push (
+        /* Navigator.push (
           context,
           MaterialPageRoute (
             builder: (BuildContext context) => const SignIn(),
