@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/common/routes/routes.dart';
 import 'package:ulearning_app/common/utils/app_styles.dart';
 import 'package:ulearning_app/pages/application/application.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in.dart';
@@ -14,12 +15,13 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-var routesMap={
-          "/": (context) => Welcome(),
-          "/signIn": (context) => const SignIn(),
-          "/register": (context) => const SignUp(),
-          '/application': (context) => const Application(),
-        };
+var routesMap = {
+  "/": (context) => Welcome(),
+  "/signIn": (context) => const SignIn(),
+  "/register": (context) => const SignUp(),
+  '/application': (context) => const Application(),
+};
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -30,8 +32,8 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       builder: (context, child) => MaterialApp(
         theme: AppTheme.appThemeData,
-        routes: routesMap,
-       // onGenerateRoute: ()=>RandomFunction(),
+      //  routes: routesMap,
+        onGenerateRoute: AppPages.generateRouteSettings,
       ),
     );
   }
