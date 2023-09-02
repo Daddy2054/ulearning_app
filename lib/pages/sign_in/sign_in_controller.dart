@@ -96,15 +96,16 @@ class SignInController {
       Global.storageService
           .setString(AppConstants.STORAGE_USER_TOKEN_KEY, '12345');
 
-      // navigator.pushNamedAndRemoveUntil(newRouteName, (route) => false)
-      navigator.push(
-        MaterialPageRoute(
-          builder: (BuildContext context) => Scaffold(
-            appBar: AppBar(),
-            body: Container(),
-          ),
-        ),
-      );
+      navigator.pushNamedAndRemoveUntil('/application', (route) => false);
+      // navigator.push(
+      //   MaterialPageRoute(
+      //     builder: (BuildContext context) => Scaffold(
+      //       appBar: AppBar(),
+      //       body: const Application(),
+      //     ),
+      //   ),
+      // );
+      //navigator.pushNamed('/application');
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
