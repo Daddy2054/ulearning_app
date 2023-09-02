@@ -24,10 +24,27 @@ class AppPages {
     }
     if (settings.name != null) {
       var result = routes().where((element) => element.path == settings.name);
-      //if we used this is first time  or not
-      bool deviceFirstTime = Global.storageService.getDeviceFirstOpen();
+      if (result.isNotEmpty) {
+        //if we used this is first time  or not
+        bool deviceFirstTime = Global.storageService.getDeviceFirstOpen();
 
-      if (result.first.path == AppRoutesNames.WELCOME && deviceFirstTime) {}
+        if (result.first.path == AppRoutesNames.WELCOME && deviceFirstTime) {
+          bool isLoggedIn = Global.storageService.isLoggedIn();
+          if (isLoggedIn) {
+            return MaterialPageRoute(
+                builder: (_) => const Application(), settings: settings);
+          } else {
+            return MaterialPageRoute(
+                builder: (_) => const SignIn(), settings: settings);
+          }
+        } else {
+          if (kDebugMode) {
+            print('App ran first time');
+          }
+          return MaterialPageRoute(
+              builder: (_) => result.first.page, settings: settings);
+        }
+      }
     }
     return MaterialPageRoute(
       builder: (_) => Welcome(),
