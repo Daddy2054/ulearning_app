@@ -27,7 +27,7 @@ class AppPages {
       if (result.isNotEmpty) {
         //if we used this is first time  or not
         bool deviceFirstTime = Global.storageService.getDeviceFirstOpen();
-
+        print(deviceFirstTime);
         if (result.first.path == AppRoutesNames.WELCOME && deviceFirstTime) {
           bool isLoggedIn = Global.storageService.isLoggedIn();
           if (isLoggedIn) {
