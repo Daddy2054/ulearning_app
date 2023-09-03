@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:ulearning_app/common/widgets/app_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ulearning_app/common/widgets/app_shadow.dart';
+import 'package:ulearning_app/pages/application/widgets/widgets.dart';
 
-class Application extends StatefulWidget {
+class Application extends StatelessWidget {
   const Application({super.key});
 
   @override
-  State<Application> createState() => _ApplicationState();
-}
-
-class _ApplicationState extends State<Application> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(title: 'homepage'),
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
+          body: Container(),
+          bottomNavigationBar: Container(
+            width: 375.w,
+            height: 58.h,
+            decoration: appBoxShadowWithRadius(),
+            child: BottomNavigationBar(
+              items: bottomTabs,
+              elevation: 0,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
