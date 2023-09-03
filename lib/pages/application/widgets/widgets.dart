@@ -17,7 +17,7 @@ var bottomTabs = <BottomNavigationBarItem>[
       color: AppColors.primaryElement,
     ),
     backgroundColor: AppColors.primaryBackground,
-    label: "Search",
+    label: "Search1",
   ),
   BottomNavigationBarItem(
     icon: bottomContainer(imagePath: "assets/icons/search2.png"),
@@ -26,7 +26,7 @@ var bottomTabs = <BottomNavigationBarItem>[
       color: AppColors.primaryElement,
     ),
     backgroundColor: AppColors.primaryBackground,
-    label: "Search",
+    label: "Search2",
   ),
   BottomNavigationBarItem(
     icon: bottomContainer(imagePath: "assets/icons/search2.png"),
@@ -35,7 +35,7 @@ var bottomTabs = <BottomNavigationBarItem>[
       color: AppColors.primaryElement,
     ),
     backgroundColor: AppColors.primaryBackground,
-    label: "Search",
+    label: "Search3",
   ),
 ];
 
