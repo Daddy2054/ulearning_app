@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/common/entities/user.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/utils/constants.dart';
+import 'package:ulearning_app/features/sign_in/repo/sigin_in_repo.dart';
 
 import '../../../common/widgets/popup_messages.dart';
 import '../../../global.dart';
@@ -36,9 +37,9 @@ class SignInController {
     }
     ref.read(appLoaderProvider.notifier).setLoaderValue(true);
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+      final credential = await SignInRepo.firebaseSignIn(
+        email,
+        password,
       );
       if (credential.user == null) {
         toastInfo('User not found');
