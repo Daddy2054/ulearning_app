@@ -5,14 +5,14 @@ import 'package:ulearning_app/pages/sign_in/widgets/image_widgets.dart';
 
 var bottomTabs = <BottomNavigationBarItem>[
   BottomNavigationBarItem(
-    icon: bottomContainer(),
-    activeIcon: bottomContainer(color: AppColors.primaryElement),
+    icon: _bottomContainer(),
+    activeIcon: _bottomContainer(color: AppColors.primaryElement),
     backgroundColor: AppColors.primaryBackground,
     label: "Home",
   ),
   BottomNavigationBarItem(
-    icon: bottomContainer(imagePath: "assets/icons/search2.png"),
-    activeIcon: bottomContainer(
+    icon: _bottomContainer(imagePath: "assets/icons/search2.png"),
+    activeIcon: _bottomContainer(
       imagePath: "assets/icons/search2.png",
       color: AppColors.primaryElement,
     ),
@@ -20,26 +20,35 @@ var bottomTabs = <BottomNavigationBarItem>[
     label: "Search1",
   ),
   BottomNavigationBarItem(
-    icon: bottomContainer(imagePath: "assets/icons/search2.png"),
-    activeIcon: bottomContainer(
-      imagePath: "assets/icons/search2.png",
+    icon: _bottomContainer(imagePath: "assets/icons/play-circle1.png"),
+    activeIcon: _bottomContainer(
+      imagePath: "assets/icons/play-circle1.png",
       color: AppColors.primaryElement,
     ),
     backgroundColor: AppColors.primaryBackground,
-    label: "Search2",
+    label: "Play",
   ),
   BottomNavigationBarItem(
-    icon: bottomContainer(imagePath: "assets/icons/search2.png"),
-    activeIcon: bottomContainer(
-      imagePath: "assets/icons/search2.png",
+    icon: _bottomContainer(imagePath: "assets/icons/message-circle.png"),
+    activeIcon: _bottomContainer(
+      imagePath: "assets/icons/message-circle.png",
       color: AppColors.primaryElement,
     ),
     backgroundColor: AppColors.primaryBackground,
-    label: "Search3",
+    label: "Message",
+  ),
+  BottomNavigationBarItem(
+    icon: _bottomContainer(imagePath: "assets/icons/person2.png"),
+    activeIcon: _bottomContainer(
+      imagePath: "assets/icons/person2.png",
+      color: AppColors.primaryElement,
+    ),
+    backgroundColor: AppColors.primaryBackground,
+    label: "Profile",
   ),
 ];
 
-Widget bottomContainer({
+Widget _bottomContainer({
   double width = 15,
   double height = 15,
   String imagePath = 'assets/icons/home.png',
@@ -53,4 +62,47 @@ Widget bottomContainer({
       color: color,
     ),
   );
+}
+
+Widget appScreens({
+  int index = 0,
+}) {
+  List<Widget> screens = [
+    Center(
+      child: appImage(
+        imagePath: 'assets/icons/home.png',
+        width: 250,
+        height: 250,
+      ),
+    ),
+    Center(
+      child: appImage(
+        imagePath: 'assets/icons/search2.png',
+        width: 250,
+        height: 250,
+      ),
+    ),
+    Center(
+      child: appImage(
+        imagePath: 'assets/icons/play-circle.png',
+        width: 250,
+        height: 250,
+      ),
+    ),
+    Center(
+      child: appImage(
+        imagePath: 'assets/icons/message-circle.png',
+        width: 250,
+        height: 250,
+      ),
+    ),
+    Center(
+      child: appImage(
+        imagePath: 'assets/icons/person2.png',
+        width: 250,
+        height: 250,
+      ),
+    ),
+  ];
+  return screens[index];
 }
