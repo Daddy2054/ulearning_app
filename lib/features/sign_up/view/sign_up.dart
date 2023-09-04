@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/sign_in/widgets/button_widgets.dart';
-import 'package:ulearning_app/pages/sign_up/notifier/register_notifier.dart';
-import 'package:ulearning_app/pages/sign_up/sign_up_controller.dart';
+import 'package:ulearning_app/features/sign_in/view/widgets/button_widgets.dart';
+import 'package:ulearning_app/features/sign_up/provider/register_notifier.dart';
+import 'package:ulearning_app/features/sign_up/controller/sign_up_controller.dart';
 
-import '../../common/global_loader/global_loader.dart';
-import '../../common/widgets/app_bar.dart';
-import '../../common/widgets/app_textfields.dart';
+import '../../../common/global_loader/global_loader.dart';
+import '../../../common/widgets/app_bar.dart';
+import '../../../common/widgets/app_textfields.dart';
 
 class SignUp extends ConsumerStatefulWidget {
   const SignUp({super.key});

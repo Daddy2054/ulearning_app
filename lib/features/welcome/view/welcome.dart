@@ -1,8 +1,8 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import './notifier/welcome_notifier.dart';
-import 'package:ulearning_app/pages/welcome/widgets.dart';
+import '../provider/welcome_notifier.dart';
+import 'package:ulearning_app/features/welcome/view/widgets/widgets.dart';
 
 //final indexProvider = StateProvider<int>((ref) => 0);
 

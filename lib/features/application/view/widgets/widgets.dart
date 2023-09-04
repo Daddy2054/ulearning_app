@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/utils/image_res.dart';
-import 'package:ulearning_app/pages/sign_in/widgets/image_widgets.dart';
+import 'package:ulearning_app/features/sign_in/view/widgets/image_widgets.dart';
 
 var bottomTabs = <BottomNavigationBarItem>[
   BottomNavigationBarItem(

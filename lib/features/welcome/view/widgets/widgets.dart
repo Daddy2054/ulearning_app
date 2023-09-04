@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 
-import '../../common/utils/constants.dart';
-import '../../global.dart';
+import '../../../../common/utils/constants.dart';
+import '../../../../global.dart';
 
 Widget appOnboardingPage(
   PageController controller, {

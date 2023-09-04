@@ -5,13 +5,13 @@ import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/pages/sign_in/notifier/sign_in_notifier.dart';
-import 'package:ulearning_app/pages/sign_in/sign_in_controller.dart';
-import 'package:ulearning_app/pages/sign_in/widgets/button_widgets.dart';
-import 'package:ulearning_app/pages/sign_in/widgets/sign_in_widgets.dart';
+import 'package:ulearning_app/features/sign_in/provider/sign_in_notifier.dart';
+import 'package:ulearning_app/features/sign_in/controller/sign_in_controller.dart';
+import 'package:ulearning_app/features/sign_in/view/widgets/button_widgets.dart';
+import 'package:ulearning_app/features/sign_in/view/widgets/sign_in_widgets.dart';
 
-import '../../common/widgets/app_bar.dart';
-import '../../common/widgets/app_textfields.dart';
+import '../../../common/widgets/app_bar.dart';
+import '../../../common/widgets/app_textfields.dart';
 
 class SignIn extends ConsumerStatefulWidget {
   const SignIn({super.key});
@@ -31,7 +31,7 @@ class _SignInState extends ConsumerState<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    final signInProvider = ref.watch(signInNotifierProvider);
+   // final signInProvider = ref.watch(signInNotifierProvider);
     final loader = ref.watch(appLoaderProvider);
 
     return Container(

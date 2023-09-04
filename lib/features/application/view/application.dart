@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
-import 'package:ulearning_app/pages/application/notifier/application_nav_notifier.dart';
-import 'package:ulearning_app/pages/application/widgets/widgets.dart';
+import 'package:ulearning_app/features/application/provider/application_nav_notifier.dart';
+import 'package:ulearning_app/features/application/view/widgets/widgets.dart';
 
 class Application extends ConsumerWidget {
   const Application({super.key});
