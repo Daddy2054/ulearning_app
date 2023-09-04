@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
+import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 import 'package:ulearning_app/pages/sign_in/widgets/button_widgets.dart';
 import 'package:ulearning_app/pages/sign_up/notifier/register_notifier.dart';
@@ -30,7 +31,7 @@ class _SignUpState extends ConsumerState<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    final regProvider = ref.watch(registerNotifierProvider);
+   // final regProvider = ref.watch(registerNotifierProvider);
 
     final loader = ref.watch(appLoaderProvider);
 
@@ -63,7 +64,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                       ),
                       appTextField(
                         text: 'User name',
-                        iconName: 'assets/icons/user.png',
+                        iconName: ImageRes.user,
                         hintText: 'Enter your user name',
                         func: (value) => ref
                             .read(registerNotifierProvider.notifier)
@@ -74,7 +75,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                       ),
                       appTextField(
                         text: 'Email',
-                        iconName: 'assets/icons/user.png',
+                        iconName: ImageRes.user,
                         hintText: 'Enter your email address',
                         func: (value) => ref
                             .read(registerNotifierProvider.notifier)
@@ -85,7 +86,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                       ),
                       appTextField(
                         text: 'Password',
-                        iconName: 'assets/icons/lock.png',
+                        iconName: ImageRes.lock,
                         hintText: 'Enter your password',
                         obscureText: true,
                         func: (value) => ref
@@ -97,7 +98,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                       ),
                       appTextField(
                         text: 'Confirm password',
-                        iconName: 'assets/icons/lock.png',
+                        iconName: ImageRes.lock,
                         hintText: 'Confirm your password',
                         obscureText: true,
                         func: (value) => ref

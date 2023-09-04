@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/global_loader/global_loader.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
+import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
 import 'package:ulearning_app/pages/sign_in/notifier/sign_in_notifier.dart';
 import 'package:ulearning_app/pages/sign_in/sign_in_controller.dart';
@@ -61,7 +62,7 @@ class _SignInState extends ConsumerState<SignIn> {
                       appTextField(
                         controller: _controller.emailController,
                         text: 'Email',
-                        iconName: 'assets/icons/user.png',
+                        iconName: ImageRes.user,
                         hintText: 'Enter your email address',
                         func: (value) => ref
                             .read(signInNotifierProvider.notifier)
@@ -73,7 +74,7 @@ class _SignInState extends ConsumerState<SignIn> {
                       appTextField(
                         controller: _controller.passwordController,
                         text: 'Password',
-                        iconName: 'assets/icons/lock.png',
+                        iconName: ImageRes.lock,
                         hintText: 'Enter your password',
                         obscureText: true,
                         func: (value) => ref
