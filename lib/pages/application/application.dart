@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
+import 'package:ulearning_app/pages/application/notifier/application_nav_notifier.dart';
 import 'package:ulearning_app/pages/application/widgets/widgets.dart';
 
-class Application extends StatefulWidget {
+class Application extends ConsumerWidget {
   const Application({super.key});
 
   @override
-  State<Application> createState() => _ApplicationState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    int index = ref.watch(applicationNavIndexProvider);
 
-class _ApplicationState extends State<Application> {
-  int index = 0;
-  @override
-  Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: SafeArea(
@@ -27,10 +25,9 @@ class _ApplicationState extends State<Application> {
             child: BottomNavigationBar(
               currentIndex: index,
               onTap: (value) {
-                setState(() {
-                  index = value;
-                  //   print('$value');
-                });
+                ref
+                    .read(applicationNavIndexProvider.notifier)
+                    .changeIndex(value);
               },
               items: bottomTabs,
               elevation: 0,

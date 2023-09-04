@@ -6,7 +6,7 @@ part of 'global_loader.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appLoaderHash() => r'2412315cde622e562d14036fa10e013d084067b4';
+String _$appLoaderHash() => r'c047eb4d2414f6a528e7d049b31caf359cfc2301';
 
 /// See also [AppLoader].
 @ProviderFor(AppLoader)
