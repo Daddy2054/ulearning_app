@@ -24,9 +24,12 @@ class _SignInState extends ConsumerState<SignIn> {
   late SignInController _controller;
 
   @override
-  void initState() {
-    _controller = SignInController(ref);
-    super.initState();
+  void didChangeDependencies() {
+    //Future.delayed(Duration(seconds: 0), (){
+      _controller = SignInController();
+    //});
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
   }
 
   @override
@@ -92,7 +95,7 @@ class _SignInState extends ConsumerState<SignIn> {
                       Center(
                         child: appButton(
                           buttonName: 'Login',
-                          func: () => _controller.handleSignIn(),
+                        func: () => _controller.handleSignIn(ref),
                         ),
                       ),
                       SizedBox(

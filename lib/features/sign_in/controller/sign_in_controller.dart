@@ -9,17 +9,18 @@ import 'package:ulearning_app/features/sign_in/repo/sigin_in_repo.dart';
 
 import '../../../common/widgets/popup_messages.dart';
 import '../../../global.dart';
+import '../../../main.dart';
 import '../provider/sign_in_notifier.dart';
 
 class SignInController {
-  WidgetRef ref;
 
-  SignInController(this.ref);
+  SignInController();
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
-  Future<void> handleSignIn() async {
+  
+  Future<void> handleSignIn(WidgetRef ref) async {
+  
     var state = ref.read(signInNotifierProvider);
     String email = state.email;
     String password = state.password;
@@ -83,30 +84,21 @@ class SignInController {
   }
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
-    // ref.read(appLoaderProvider.notifier).setLoaderValue(true);
-    // ref.read(appLoaderProvider.notifier).setLoaderValue(false);
+ 
 
     //we need to talk to server
     //have local storage
 
     try {
-      var navigator = Navigator.of(ref.context);
+   //   var navigator = Navigator.of(ref.context);
       //try to remember user info
       Global.storageService
           .setString(AppConstants.STORAGE_USER_PROFILE_KEY, '123');
       Global.storageService
           .setString(AppConstants.STORAGE_USER_TOKEN_KEY, '12345');
 
-      navigator.pushNamedAndRemoveUntil('/application', (route) => false);
-      // navigator.push(
-      //   MaterialPageRoute(
-      //     builder: (BuildContext context) => Scaffold(
-      //       appBar: AppBar(),
-      //       body: const Application(),
-      //     ),
-      //   ),
-      // );
-      //navigator.pushNamed('/application');
+      navKey.currentState?.pushNamedAndRemoveUntil("/application", (route) => false);
+ 
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
