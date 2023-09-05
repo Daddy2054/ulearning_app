@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +15,12 @@ import '../../../main.dart';
 import '../provider/sign_in_notifier.dart';
 
 class SignInController {
-
   SignInController();
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  
+
   Future<void> handleSignIn(WidgetRef ref) async {
-  
     var state = ref.read(signInNotifierProvider);
     String email = state.email;
     String password = state.password;
@@ -84,21 +84,23 @@ class SignInController {
   }
 
   void asyncPostAllData(LoginRequestEntity loginRequestEntity) {
- 
-
     //we need to talk to server
     //have local storage
 
     try {
-   //   var navigator = Navigator.of(ref.context);
+      //   var navigator = Navigator.of(ref.context);
       //try to remember user info
-      Global.storageService
-          .setString(AppConstants.STORAGE_USER_PROFILE_KEY, '123');
+      Global.storageService.setString(
+        AppConstants.STORAGE_USER_PROFILE_KEY,
+        jsonEncode(
+          {'name': 'dbestech', 'email': 'info@dbestech.com', 'age': 34},
+        ),
+      );
       Global.storageService
           .setString(AppConstants.STORAGE_USER_TOKEN_KEY, '12345');
 
-      navKey.currentState?.pushNamedAndRemoveUntil("/application", (route) => false);
- 
+      navKey.currentState
+          ?.pushNamedAndRemoveUntil("/application", (route) => false);
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());
