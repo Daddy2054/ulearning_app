@@ -18,6 +18,10 @@ class StorageService {
     return await _pref.setBool(key, value);
   }
 
+  String getString(String key) {
+    return _pref.getString(key) ?? "";
+  }
+
   bool getDeviceFirstOpen() {
     return _pref.getBool(
           AppConstants.STORAGE_DEVICE_OPEN_FIRST_KEY,

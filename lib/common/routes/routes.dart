@@ -22,14 +22,14 @@ class AppPages {
 
   static MaterialPageRoute generateRouteSettings(RouteSettings settings) {
     if (kDebugMode) {
-      print("clicked route is ${settings.name}");
+  //    print("clicked route is ${settings.name}");
     }
     if (settings.name != null) {
       var result = routes().where((element) => element.path == settings.name);
       if (result.isNotEmpty) {
         //if we used this is first time  or not
         bool deviceFirstTime = Global.storageService.getDeviceFirstOpen();
-        print(deviceFirstTime);
+    //    print(deviceFirstTime);
         if (result.first.path == AppRoutesNames.WELCOME && deviceFirstTime) {
           bool isLoggedIn = Global.storageService.isLoggedIn();
           if (isLoggedIn) {
@@ -41,7 +41,7 @@ class AppPages {
           }
         } else {
           if (kDebugMode) {
-            print('App ran first time');
+    //        print('App ran first time');
           }
           return MaterialPageRoute(
               builder: (_) => result.first.page, settings: settings);
