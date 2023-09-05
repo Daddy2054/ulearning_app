@@ -4,15 +4,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ulearning_app/common/entities/user.dart';
-import 'package:ulearning_app/common/global_loader/global_loader.dart';
-import 'package:ulearning_app/common/utils/constants.dart';
-import 'package:ulearning_app/features/sign_in/repo/sigin_in_repo.dart';
 
+import '../../../common/global_loader/global_loader.dart';
+import '../../../common/models/user.dart';
+import '../../../common/utils/constants.dart';
 import '../../../common/widgets/popup_messages.dart';
 import '../../../global.dart';
 import '../../../main.dart';
 import '../provider/sign_in_notifier.dart';
+import '../repo/sigin_in_repo.dart';
 
 class SignInController {
   SignInController();
