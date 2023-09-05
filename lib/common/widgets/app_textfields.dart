@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +11,7 @@ Widget appTextField({
   String iconName = '',
   String hintText = 'Type in your info',
   bool obscureText = false,
-      void Function(String value)? func,
+  void Function(String value)? func,
 }) {
   return Container(
     padding: EdgeInsets.only(left: 25.w, right: 25.w),
@@ -34,34 +33,40 @@ Widget appTextField({
                 margin: EdgeInsets.only(left: 17.w),
                 child: appImage(imagePath: iconName),
               ),
-              SizedBox(
-                width: 280.w,
-                height: 50.h,
-                child: TextField(
-                  controller: controller,
-                  onChanged: (value) =>func!(value),
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    hintText: hintText,
-                    enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                      ),
-                    ),
-                  ),
-                  maxLines: 1,
-                  autocorrect: false,
-                  obscureText: obscureText,
-                ),
-              )
+              appTextFieldOnly(
+                controller: controller,
+                hintText: hintText,
+                func: func,
+                obscureText: obscureText,
+              ),
+              // SizedBox(
+              //   width: 280.w,
+              //   height: 50.h,
+              //   child: TextField(
+              //     controller: controller,
+              //     onChanged: (value) =>func!(value),
+              //     keyboardType: TextInputType.emailAddress,
+              //     decoration: InputDecoration(
+              //       hintText: hintText,
+              //       enabledBorder: const OutlineInputBorder(
+              //         borderSide: BorderSide(
+              //           color: Colors.transparent,
+              //         ),
+              //       ),
+              //       focusedBorder: const OutlineInputBorder(
+              //         borderSide: BorderSide(
+              //           color: Colors.transparent,
+              //         ),
+              //       ),
+              //     ),
+              //     maxLines: 1,
+              //     autocorrect: false,
+              //     obscureText: obscureText,
+              //   ),
+              // )
             ],
           ),
-        )
+        ),
       ],
     ),
   );
@@ -79,7 +84,6 @@ Widget appTextFieldOnly({
     width: width.w,
     height: height.h,
     child: TextField(
-
       controller: controller,
       onChanged: (value) => func!(value),
       keyboardType: TextInputType.multiline,

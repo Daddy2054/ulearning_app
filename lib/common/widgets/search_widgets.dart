@@ -15,19 +15,27 @@ Widget searchBar() {
         width: 280.w,
         height: 40.h,
         decoration: appBoxShadow(
-            color: AppColors.primaryBackground,
-            boxBorder: Border.all(color: AppColors.primaryFourthElementText)),
+          color: AppColors.primaryBackground,
+          boxBorder: Border.all(
+            color: AppColors.primaryFourthElementText,
+          ),
+        ),
         child: Row(
           children: [
             Container(
               margin: EdgeInsets.only(left: 17.w),
-              child: appImage(imagePath: ImageRes.searchIcon),
+              child: appImage(
+                imagePath: ImageRes.searchIcon,
+              ),
             ),
             SizedBox(
               width: 240.w,
               height: 40.h,
               child: appTextFieldOnly(
-                  width: 240, height: 40, hintText: "Search your course..."),
+                width: 240,
+                height: 40,
+                hintText: "Search your course...",
+              ),
             )
           ],
         ),
