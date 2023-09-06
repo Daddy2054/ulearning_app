@@ -5,6 +5,7 @@ import 'package:ulearning_app/features/home/view/widgets/home_widget.dart';
 
 import '../../../common/widgets/app_bar.dart';
 import '../../../common/widgets/search_widgets.dart';
+import '../controller/home_controller.dart';
 
 class Home extends ConsumerStatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -14,6 +15,21 @@ class Home extends ConsumerStatefulWidget {
 }
 
 class _HomeState extends ConsumerState<Home> {
+  late PageController _controller;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  // }
+  @override
+  void didChangeDependencies() {
+    _controller = PageController(
+      initialPage: ref.watch(
+        homeScreenBannerDotsProvider,
+      ),
+    );
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +51,10 @@ class _HomeState extends ConsumerState<Home> {
               SizedBox(
                 height: 20.h,
               ),
-              banner(ref:ref),
+              banner(
+                ref: ref,
+                controller: _controller,
+              ),
             ],
           ),
         ),

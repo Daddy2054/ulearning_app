@@ -9,12 +9,10 @@ import '../../../../common/widgets/text_widgets.dart';
 import '../../../../global.dart';
 import '../../controller/home_controller.dart';
 
-Widget banner({required WidgetRef ref}) {
-  PageController controller = PageController(
-    initialPage: ref.watch(
-      homeScreenBannerDotsProvider,
-    ),
-  );
+Widget banner({
+  required WidgetRef ref,
+  required PageController controller,
+}) {
   return Column(
     children: [
       SizedBox(
