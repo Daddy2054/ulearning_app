@@ -9,44 +9,52 @@ import '../../../../common/widgets/text_widgets.dart';
 import '../../../../global.dart';
 import '../../controller/home_controller.dart';
 
-Widget banner({
-  required WidgetRef ref,
-  required PageController controller,
-}) {
-  return Column(
-    children: [
-      SizedBox(
-        width: 325.w,
-        height: 160.h,
-        child: PageView(
-          controller: controller,
-          onPageChanged: (index) {
-            ref.read(homeScreenBannerDotsProvider.notifier).setIndex(index);
-          },
-          children: [
-            bannerContainer(imagePath: ImageRes.banner1),
-            bannerContainer(imagePath: ImageRes.banner2),
-            bannerContainer(imagePath: ImageRes.banner3),
-          ],
+class HomeBanner extends StatelessWidget {
+  final PageController controller;
+  final WidgetRef ref;
+  const HomeBanner({
+    Key? key,
+    required this.controller,
+    required this.ref,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          width: 325.w,
+          height: 160.h,
+          child: PageView(
+            controller: controller,
+            onPageChanged: (index) {
+              ref.read(homeScreenBannerDotsProvider.notifier).setIndex(index);
+            },
+            children: [
+              bannerContainer(imagePath: ImageRes.banner1),
+              bannerContainer(imagePath: ImageRes.banner2),
+              bannerContainer(imagePath: ImageRes.banner3),
+            ],
+          ),
         ),
-      ),
-      SizedBox(
-        height: 5.h,
-      ),
-      //dots
-      DotsIndicator(
-        position: ref.watch(homeScreenBannerDotsProvider),
-        dotsCount: 3,
-        mainAxisAlignment: MainAxisAlignment.center,
-        decorator: DotsDecorator(
-          size: const Size.square(9.0),
-          activeSize: const Size(24.0, 8.0),
-          activeShape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.w)),
+        SizedBox(
+          height: 5.h,
         ),
-      ),
-    ],
-  );
+        //dots
+        DotsIndicator(
+          position: ref.watch(homeScreenBannerDotsProvider),
+          dotsCount: 3,
+          mainAxisAlignment: MainAxisAlignment.center,
+          decorator: DotsDecorator(
+            size: const Size.square(9.0),
+            activeSize: const Size(24.0, 8.0),
+            activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5.w)),
+          ),
+        ),
+      ],
+    );
+  }
 }
 
 Widget bannerContainer({required String imagePath}) {
@@ -61,20 +69,31 @@ Widget bannerContainer({required String imagePath}) {
   );
 }
 
-Widget userName() {
-  return Container(
-    child: text24Normal(
+class UserName extends StatelessWidget {
+  const UserName({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: text24Normal(
         text: Global.storageService.getUserProfile().name!,
-        fontWeight: FontWeight.bold),
-  );
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
 }
 
-Widget helloText() {
-  return Container(
-    child: text24Normal(
-      text: "Hello2, ",
-      color: AppColors.primaryThirdElementText,
-      fontWeight: FontWeight.bold,
-    ),
-  );
+class HelloText extends StatelessWidget {
+  const HelloText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: text24Normal(
+        text: "Hello, ",
+        color: AppColors.primaryThirdElementText,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+  }
 }
