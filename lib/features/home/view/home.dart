@@ -19,12 +19,16 @@ class Home extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-           helloText(),
+              helloText(),
               userName(),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               searchBar(),
-              SizedBox(height: 20.h,),
-//              banner(ref:ref),
+              SizedBox(
+                height: 20.h,
+              ),
+              banner(),
             ],
           ),
         ),
