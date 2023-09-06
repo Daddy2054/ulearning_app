@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/features/home/view/widgets/home_widget.dart';
 
 import '../../../common/widgets/app_bar.dart';
 import '../../../common/widgets/search_widgets.dart';
 
-class Home extends StatelessWidget {
+class Home extends ConsumerStatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  ConsumerState<Home> createState() => _HomeState();
+}
+
+class _HomeState extends ConsumerState<Home> {
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +35,7 @@ class Home extends StatelessWidget {
               SizedBox(
                 height: 20.h,
               ),
-              banner(),
+              banner(ref:ref),
             ],
           ),
         ),
