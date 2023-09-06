@@ -5,46 +5,71 @@ import 'package:ulearning_app/common/widgets/text_widgets.dart';
 import '../../../../common/utils/constants.dart';
 import '../../../../global.dart';
 
-Widget appOnboardingPage(
-  PageController controller, {
-  String imagePath = 'assets/images/reading.png',
-  String title = '',
-  String subtitle = '',
-  index = 0,
-  required BuildContext context,
-}) {
-  return Column(
-    children: [
-      // first page
-      Image.asset(
-        imagePath,
-        fit: BoxFit.fitHeight,
-      ),
-      Container(
-        margin: const EdgeInsets.only(
-          top: 15,
+class AppOnboardingPage extends StatelessWidget {
+  final PageController controller;
+  final String imagePath;
+  final String title;
+  final String subTitle;
+  final int index;
+  final BuildContext context;
+
+  const AppOnboardingPage({
+    Key? key,
+    required this.controller,
+    required this.imagePath,
+    required this.title,
+    required this.subTitle,
+    required this.index,
+    required this.context,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // first page
+        Image.asset(
+          imagePath,
+          fit: BoxFit.fitHeight,
         ),
-        child: text24Normal(text: title),
-      ),
-      Container(
-        margin: const EdgeInsets.only(top: 15),
-        padding: const EdgeInsets.only(
-          left: 30,
-          right: 30,
+        Container(
+          margin: const EdgeInsets.only(
+            top: 15,
+          ),
+          child: text24Normal(
+            text: title,
+          ),
         ),
-        child: text16Normal(text: subtitle),
-      ),
-      _nextButton(index, controller, context),
-    ],
-  );
+        Container(
+          margin: const EdgeInsets.only(top: 15),
+          padding: const EdgeInsets.only(
+            left: 30,
+            right: 30,
+          ),
+          child: text16Normal(
+            text: subTitle,
+          ),
+        ),
+        _nextButton(
+          index,
+          controller,
+          context,
+        ),
+      ],
+    );
+  }
 }
 
-Widget _nextButton(int index, PageController controller, BuildContext context) {
+Widget _nextButton(
+  int index,
+  PageController controller,
+  BuildContext context,
+) {
   return GestureDetector(
     onTap: () {
-           bool deviceFirstTime = Global.storageService.getDeviceFirstOpen();
-        print(deviceFirstTime);
-   
+      bool deviceFirstTime = Global.storageService.getDeviceFirstOpen();
+      print(deviceFirstTime);
+
       if (index < 3) {
         controller.animateToPage(
           index,
