@@ -10,15 +10,20 @@ import '../../../../global.dart';
 import '../../controller/home_controller.dart';
 
 Widget banner({required WidgetRef ref}) {
+  PageController controller = PageController(
+    initialPage: ref.watch(
+      homeScreenBannerDotsProvider,
+    ),
+  );
   return Column(
     children: [
       SizedBox(
         width: 325.w,
         height: 160.h,
         child: PageView(
+          controller: controller,
           onPageChanged: (index) {
             ref.read(homeScreenBannerDotsProvider.notifier).setIndex(index);
-            
           },
           children: [
             bannerContainer(imagePath: ImageRes.banner1),
@@ -27,18 +32,19 @@ Widget banner({required WidgetRef ref}) {
           ],
         ),
       ),
-         SizedBox(height: 5.h,),
+      SizedBox(
+        height: 5.h,
+      ),
       //dots
       DotsIndicator(
         position: ref.watch(homeScreenBannerDotsProvider),
         dotsCount: 3,
         mainAxisAlignment: MainAxisAlignment.center,
         decorator: DotsDecorator(
-            size: const Size.square(9.0),
-            activeSize: const Size(24.0, 8.0),
-            activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.w)
-            ),
+          size: const Size.square(9.0),
+          activeSize: const Size(24.0, 8.0),
+          activeShape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.w)),
         ),
       ),
     ],
