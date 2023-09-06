@@ -39,31 +39,6 @@ Widget appTextField({
                 func: func,
                 obscureText: obscureText,
               ),
-              // SizedBox(
-              //   width: 280.w,
-              //   height: 50.h,
-              //   child: TextField(
-              //     controller: controller,
-              //     onChanged: (value) =>func!(value),
-              //     keyboardType: TextInputType.emailAddress,
-              //     decoration: InputDecoration(
-              //       hintText: hintText,
-              //       enabledBorder: const OutlineInputBorder(
-              //         borderSide: BorderSide(
-              //           color: Colors.transparent,
-              //         ),
-              //       ),
-              //       focusedBorder: const OutlineInputBorder(
-              //         borderSide: BorderSide(
-              //           color: Colors.transparent,
-              //         ),
-              //       ),
-              //     ),
-              //     maxLines: 1,
-              //     autocorrect: false,
-              //     obscureText: obscureText,
-              //   ),
-              // )
             ],
           ),
         ),
