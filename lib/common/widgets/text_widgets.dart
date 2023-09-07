@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/utils/app_colors.dart';
+
+import '../utils/app_colors.dart';
 
 Widget text24Normal({
   String text = '',
@@ -33,19 +34,27 @@ Widget text16Normal({
   );
 }
 
-Widget text14Normal({
-  String text = '',
-  Color color = AppColors.primaryThirdElementText,
-}) {
-  return Text(
-    text,
-    textAlign: TextAlign.start,
-    style: TextStyle(
-      color: color,
-      fontSize: 16,
-      fontWeight: FontWeight.normal,
-    ),
-  );
+class Text14Normal extends StatelessWidget {
+  final String text;
+  final Color color;
+  const Text14Normal({
+    Key? key,
+    this.text = "",
+    this.color = AppColors.primaryThirdElementText,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.start,
+      style: TextStyle(
+        color: color,
+        fontSize: 14.sp,
+        fontWeight: FontWeight.normal,
+      ),
+    );
+  }
 }
 
 Widget textUnderLine({String text = 'Your text'}) {

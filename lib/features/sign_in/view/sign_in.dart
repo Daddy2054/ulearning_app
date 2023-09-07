@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/global_loader/global_loader.dart';
-import 'package:ulearning_app/common/utils/app_colors.dart';
-import 'package:ulearning_app/common/utils/image_res.dart';
-import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/features/sign_in/provider/sign_in_notifier.dart';
-import 'package:ulearning_app/features/sign_in/controller/sign_in_controller.dart';
-import 'package:ulearning_app/features/sign_in/view/widgets/button_widgets.dart';
-import 'package:ulearning_app/features/sign_in/view/widgets/sign_in_widgets.dart';
 
+import '../../../common/global_loader/global_loader.dart';
+import '../../../common/utils/app_colors.dart';
+import '../../../common/utils/image_res.dart';
 import '../../../common/widgets/app_bar.dart';
 import '../../../common/widgets/app_textfields.dart';
+import '../../../common/widgets/text_widgets.dart';
+import '../controller/sign_in_controller.dart';
+import '../provider/sign_in_notifier.dart';
+import 'widgets/button_widgets.dart';
+import 'widgets/sign_in_widgets.dart';
 
 class SignIn extends ConsumerStatefulWidget {
   const SignIn({super.key});
@@ -25,16 +25,13 @@ class _SignInState extends ConsumerState<SignIn> {
 
   @override
   void didChangeDependencies() {
-    //Future.delayed(Duration(seconds: 0), (){
-      _controller = SignInController();
-    //});
-    // TODO: implement didChangeDependencies
+    _controller = SignInController();
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-   // final signInProvider = ref.watch(signInNotifierProvider);
+    // final signInProvider = ref.watch(signInNotifierProvider);
     final loader = ref.watch(appLoaderProvider);
 
     return Container(
@@ -55,8 +52,8 @@ class _SignInState extends ConsumerState<SignIn> {
                     children: [
                       // top login buttons
                       thirtPartyLogin(),
-                      Center(
-                        child: text14Normal(
+                      const Center(
+                        child: Text14Normal(
                             text: 'Or use your email account to log in'),
                       ),
                       SizedBox(
@@ -95,7 +92,7 @@ class _SignInState extends ConsumerState<SignIn> {
                       Center(
                         child: appButton(
                           buttonName: 'Login',
-                        func: () => _controller.handleSignIn(ref),
+                          func: () => _controller.handleSignIn(ref),
                         ),
                       ),
                       SizedBox(

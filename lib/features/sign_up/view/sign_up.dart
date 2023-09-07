@@ -31,7 +31,7 @@ class _SignUpState extends ConsumerState<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-   // final regProvider = ref.watch(registerNotifierProvider);
+    // final regProvider = ref.watch(registerNotifierProvider);
 
     final loader = ref.watch(appLoaderProvider);
 
@@ -55,8 +55,8 @@ class _SignUpState extends ConsumerState<SignUp> {
                       SizedBox(
                         height: 30.h,
                       ),
-                      Center(
-                        child: text14Normal(
+                      const Center(
+                        child: Text14Normal(
                             text: 'Enter your details below & free sign up'),
                       ),
                       SizedBox(
@@ -107,7 +107,7 @@ class _SignUpState extends ConsumerState<SignUp> {
                       ),
                       Container(
                         margin: EdgeInsets.only(left: 25.w, top: 20.h),
-                        child: text14Normal(
+                        child: const Text14Normal(
                             text:
                                 'By creating an account you are agreeing with our terms and conditions'),
                       ),
