@@ -6,7 +6,7 @@ import '../utils/app_colors.dart';
 AppBar buildAppBar({String title = ''}) {
 
   return AppBar(
-    title: text16Normal(text: title, color: AppColors.primaryText),
+    title: Text16Normal(text: title, color: AppColors.primaryText),
     centerTitle: true,
     bottom: PreferredSize(
       preferredSize: const Size.fromHeight(1),

@@ -58,6 +58,7 @@ class _HomeState extends ConsumerState<Home> {
                 ref: ref,
                 controller: _controller,
               ),
+              const HomeMenuBar(),
             ],
           ),
         ),

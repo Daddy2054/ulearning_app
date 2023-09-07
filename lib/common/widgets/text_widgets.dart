@@ -19,19 +19,30 @@ Widget text24Normal({
   );
 }
 
-Widget text16Normal({
-  String text = '',
-  Color color = AppColors.primarySecondaryElementText,
-}) {
-  return Text(
-    text,
-    textAlign: TextAlign.center,
-    style: TextStyle(
-      color: color,
-      fontSize: 16,
-      fontWeight: FontWeight.normal,
-    ),
-  );
+class Text16Normal extends StatelessWidget {
+  final String text;
+  final Color color;
+  final FontWeight fontWeight;
+
+  const Text16Normal(
+      {Key? key,
+      this.text = "",
+      this.color = AppColors.primarySecondaryElementText,
+      this.fontWeight = FontWeight.normal})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: color,
+        fontSize: 16.sp,
+        fontWeight: fontWeight,
+      ),
+    );
+  }
 }
 
 class Text14Normal extends StatelessWidget {
@@ -51,6 +62,30 @@ class Text14Normal extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontSize: 14.sp,
+        fontWeight: FontWeight.normal,
+      ),
+    );
+  }
+}
+
+class Text10Normal extends StatelessWidget {
+  final String text;
+  final Color color;
+
+  const Text10Normal(
+      {Key? key,
+      this.text = "",
+      this.color = AppColors.primaryThirdElementText})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.start,
+      style: TextStyle(
+        color: color,
+        fontSize: 10.sp,
         fontWeight: FontWeight.normal,
       ),
     );

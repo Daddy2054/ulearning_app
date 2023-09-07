@@ -46,7 +46,7 @@ class AppOnboardingPage extends StatelessWidget {
             left: 30,
             right: 30,
           ),
-          child: text16Normal(
+          child: Text16Normal(
             text: subTitle,
           ),
         ),
@@ -105,7 +105,7 @@ Widget _nextButton(
       ),
       decoration: appBoxShadow(),
       child: Center(
-        child: text16Normal(
+        child: Text16Normal(
             text: index < 3 ? "next" : "Get started", color: Colors.white),
       ),
     ),
