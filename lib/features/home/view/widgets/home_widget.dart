@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ulearning_app/features/sign_in/view/widgets/image_widgets.dart';
 
 import '../../../../common/utils/app_colors.dart';
 import '../../../../common/utils/image_res.dart';
@@ -96,4 +97,41 @@ class HelloText extends StatelessWidget {
       ),
     );
   }
+}
+
+AppBar homeAppBar() {
+  return AppBar(
+    //actions: [],
+    title: Container(
+      margin: EdgeInsets.only(
+        left: 7.w,
+        right: 7.w,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          appImage(
+            width: 18.w,
+            height: 12.h,
+            imagePath: ImageRes.menu,
+          ),
+          GestureDetector(
+            child: Container(
+              width: 40.w,
+              height: 40.w,
+              decoration: BoxDecoration(
+                image: const DecorationImage(
+                  fit: BoxFit.fitHeight,
+                  image: AssetImage(
+                    ImageRes.profile,
+                  ),
+                ),
+                borderRadius: BorderRadius.circular(20.w),
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
