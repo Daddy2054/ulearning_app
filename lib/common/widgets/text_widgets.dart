@@ -92,6 +92,30 @@ class Text10Normal extends StatelessWidget {
   }
 }
 
+class Text11Normal extends StatelessWidget {
+  final String text;
+  final Color color;
+
+  const Text11Normal({
+    Key? key,
+    this.text = "",
+    this.color = AppColors.primaryElementText,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.start,
+      style: TextStyle(
+        color: color,
+        fontSize: 11.sp,
+        fontWeight: FontWeight.normal,
+      ),
+    );
+  }
+}
+
 Widget textUnderLine({String text = 'Your text'}) {
   return GestureDetector(
     onTap: () {},

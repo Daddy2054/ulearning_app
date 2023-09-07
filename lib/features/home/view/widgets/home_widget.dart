@@ -130,24 +130,66 @@ class HomeMenuBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 15.h),
-      child:  Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          const Text16Normal(
-            text: "Choice your course",
-            color: AppColors.primaryText,
-            fontWeight: FontWeight.bold,
+    return Column(
+      children: [
+        //see all course
+        Container(
+          margin: EdgeInsets.only(top: 15.h),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const Text16Normal(
+                text: "Choice your course",
+                color: AppColors.primaryText,
+                fontWeight: FontWeight.bold,
+              ),
+              GestureDetector(
+                child: const Text10Normal(
+                  text: "See all",
+                ),
+              )
+            ],
           ),
-          GestureDetector(
-            child: const Text10Normal(
-              text: "See all",
+        ),
+        SizedBox(
+          height: 20.h,
+        ),
+        //course item button
+        Row(
+          children: [
+            Container(
+              decoration: appBoxShadow(
+                color: AppColors.primaryElement,
+                radius: 7.w,
+              ),
+              padding: EdgeInsets.only(
+                left: 15.w,
+                right: 15.w,
+                top: 5.h,
+                bottom: 5.h,
+              ),
+              child: const Text11Normal(
+                text: "All",
+              ),
             ),
-          )
-        ],
-      ),
+            Container(
+              margin: EdgeInsets.only(left: 30.w),
+              child: const Text11Normal(
+                text: "Popular",
+                color: AppColors.primaryThirdElementText,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 30.w),
+              child: const Text11Normal(
+                text: "Newest",
+                color: AppColors.primaryThirdElementText,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

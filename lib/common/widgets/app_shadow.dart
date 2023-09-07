@@ -10,6 +10,7 @@ BoxDecoration appBoxShadow({
   double sR = 1,
   double bR = 2,
   BoxBorder? boxBorder,
+  BorderRadius? borderRadius,
 }) {
   return BoxDecoration(
       color: color,
