@@ -7,7 +7,6 @@ class HttpUtil {
   static final HttpUtil _instance = HttpUtil._internal();
 
   factory HttpUtil() {
-    print('printing http instance');
     return _instance;
   }
   HttpUtil._internal(){
