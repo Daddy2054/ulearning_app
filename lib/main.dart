@@ -9,12 +9,8 @@ import 'global.dart';
 
 Future<void> main() async {
   await Global.init();
-    var obj1 = HttpUtil();
-  var obj2 = HttpUtil();
+    HttpUtil().post('api/login');
 
-  if(obj1.hashCode==obj2.hashCode){
-    print("I am the singleton class");
-  }
   runApp(const ProviderScope(child: MyApp()));
 }
 

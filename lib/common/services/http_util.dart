@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:ulearning_app/common/utils/constants.dart';
 import 'package:ulearning_app/global.dart';
 
 class HttpUtil {
@@ -11,7 +12,7 @@ class HttpUtil {
   }
   HttpUtil._internal() {
     BaseOptions options = BaseOptions(
-        baseUrl: "http://127.0.0.1:8000",
+        baseUrl: AppConstants.SERVER_API_URL,
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 5),
         headers: {},
