@@ -21,12 +21,12 @@ class HttpUtil {
    dio = Dio(options);
   }
 
-//   Map<String, dynamic>? getAuthorizationHeader(){
-//     var headers = <String, dynamic>{};
-//     var accessToken = Global.storageService.getUserToken();
-//     if(accessToken.isNotEmpty){
-//       headers['Authorization'] = 'Bearer $accessToken';
-//     }
-//     return headers;
-//   }
+  Map<String, dynamic>? getAuthorizationHeader(){
+    var headers = <String, dynamic>{};
+    var accessToken = Global.storageService.getUserToken();
+    if(accessToken.isNotEmpty){
+      headers['Authorization'] = 'Bearer $accessToken';
+    }
+    return headers;
+  }
 }
