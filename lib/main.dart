@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/services/http_util.dart';
 
 import 'common/routes/routes.dart';
 import 'common/utils/app_styles.dart';
@@ -9,7 +8,15 @@ import 'global.dart';
 
 Future<void> main() async {
   await Global.init();
-    HttpUtil().post('api/login');
+  // HttpUtil().post('api/login', queryParameters: {
+  //   'name': 'test1',
+  //   'email': 'cabc@a.com',
+  //   'password': '123456',
+  //   'avatar': 'xyz.com',
+  //   'type': '2',
+  //   'open_id': 'shfdgksdjh'
+  // });
+  // ;
 
   runApp(const ProviderScope(child: MyApp()));
 }

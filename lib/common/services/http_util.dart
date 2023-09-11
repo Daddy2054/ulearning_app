@@ -31,7 +31,7 @@ class HttpUtil {
       response,
       handler,
     ) {
-   //   print("app response data ${response.data}");
+      print("app response data ${response.data}");
 
       return handler.next(response);
     }, onError: (
