@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:ulearning_app/common/utils/constants.dart';
 import 'package:ulearning_app/global.dart';
 
@@ -24,21 +25,24 @@ class HttpUtil {
       options,
       handler,
     ) {
-    //  print("app request data ${options.data}");
+      //  print("app request data ${options.data}");
 
       return handler.next(options);
     }, onResponse: (
       response,
       handler,
     ) {
-      print("app response data ${response.data}");
+        if (kDebugMode) {
+      print("app response data ${response.data}");}
 
       return handler.next(response);
     }, onError: (
       DioException e,
       handler,
     ) {
-   //   print("app error data $e");
+      if (kDebugMode) {
+        print("app error data $e");
+      }
       ErrorEntity eInfo = createErrorEntity(e);
       onError(eInfo);
     }));
@@ -107,7 +111,7 @@ ErrorEntity createErrorEntity(DioException error) {
       return ErrorEntity(code: -1, message: "Bad SSL certificates");
 
     case DioExceptionType.badResponse:
-      switch(error.response!.statusCode){
+      switch (error.response!.statusCode) {
         case 400:
           return ErrorEntity(code: 400, message: "Bad request");
         case 401:
@@ -115,7 +119,8 @@ ErrorEntity createErrorEntity(DioException error) {
         case 500:
           return ErrorEntity(code: 500, message: "Server internal error");
       }
-      return ErrorEntity(code: error.response!.statusCode!, message: "Server bad response");
+      return ErrorEntity(
+          code: error.response!.statusCode!, message: "Server bad response");
 
     case DioExceptionType.cancel:
       return ErrorEntity(code: -1, message: "Server canceled it");
@@ -128,9 +133,9 @@ ErrorEntity createErrorEntity(DioException error) {
   }
 }
 
-void onError(ErrorEntity eInfo){
+void onError(ErrorEntity eInfo) {
   print('error.code -> ${eInfo.code}, error.message -> ${eInfo.message}');
-  switch(eInfo.code){
+  switch (eInfo.code) {
     case 400:
       print("Server syntax error");
       break;
@@ -143,6 +148,5 @@ void onError(ErrorEntity eInfo){
     default:
       print("Unknown error");
       break;
-
   }
 }
