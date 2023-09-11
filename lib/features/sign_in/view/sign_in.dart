@@ -34,83 +34,87 @@ class _SignInState extends ConsumerState<SignIn> {
     // final signInProvider = ref.watch(signInNotifierProvider);
     final loader = ref.watch(appLoaderProvider);
 
-    return Container(
-      child: SafeArea(
-        child: Scaffold(
-          appBar: buildAppBar(title: 'Login'),
-          backgroundColor: Colors.white,
-          body: loader
-              ? const Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: Colors.blue,
-                    color: AppColors.primaryElement,
-                  ),
-                )
-              : SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // top login buttons
-                      thirtPartyLogin(),
-                      const Center(
-                        child: Text14Normal(
-                            text: 'Or use your email account to log in'),
-                      ),
-                      SizedBox(
-                        height: 50.h,
-                      ),
-                      appTextField(
+    return SafeArea(
+      child: Scaffold(
+        appBar: buildAppBar(title: 'Login'),
+        backgroundColor: Colors.white,
+        body: loader
+            ? const Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.blue,
+                  color: AppColors.primaryElement,
+                ),
+              )
+            : SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // top login buttons
+                    thirtPartyLogin(),
+                    const Center(
+                      child: Text14Normal(
+                          text: 'Or use your email account to log in'),
+                    ),
+                    SizedBox(
+                      height: 50.h,
+                    ),
+                    Consumer(
+                    builder: (_, WidgetRef ref, child){
+
+                      return appTextField(
                         controller: _controller.emailController,
-                        text: 'Email',
-                        iconName: ImageRes.user,
-                        hintText: 'Enter your email address',
+                        text: "Email",
+                        iconName:  ImageRes.user,
+                        hintText: "Enter your email address",
                         func: (value) => ref
                             .read(signInNotifierProvider.notifier)
                             .onUserEmailChange(value),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      appTextField(
-                        controller: _controller.passwordController,
-                        text: 'Password',
-                        iconName: ImageRes.lock,
-                        hintText: 'Enter your password',
-                        obscureText: true,
-                        func: (value) => ref
-                            .read(signInNotifierProvider.notifier)
-                            .onUserPasswordChange(value),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 25.w, top: 20.h),
-                        child: textUnderLine(text: 'Forgot password?'),
-                      ),
-                      SizedBox(
-                        height: 100.h,
-                      ),
-                      // app login button
-                      Center(
-                        child: appButton(
-                          buttonName: 'Login',
-                          func: () => _controller.handleSignIn(ref),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      // app register button
-                      Center(
-                        child: appButton(
-                          buttonName: 'Register',
-                          isLogin: false,
-                          context: context,
-                          func: () => Navigator.pushNamed(context, '/register'),
-                        ),
-                      ),
-                    ],
+
+                      );
+                    },
                   ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    appTextField(
+                      controller: _controller.passwordController,
+                      text: 'Password',
+                      iconName: ImageRes.lock,
+                      hintText: 'Enter your password',
+                      obscureText: true,
+                      func: (value) => ref
+                          .read(signInNotifierProvider.notifier)
+                          .onUserPasswordChange(value),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 25.w, top: 20.h),
+                      child: textUnderLine(text: 'Forgot password?'),
+                    ),
+                    SizedBox(
+                      height: 100.h,
+                    ),
+                    // app login button
+                    Center(
+                      child: appButton(
+                        buttonName: 'Login',
+                        func: () => _controller.handleSignIn(ref),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    // app register button
+                    Center(
+                      child: appButton(
+                        buttonName: 'Register',
+                        isLogin: false,
+                        context: context,
+                        func: () => Navigator.pushNamed(context, '/register'),
+                      ),
+                    ),
+                  ],
                 ),
-        ),
+              ),
       ),
     );
   }
