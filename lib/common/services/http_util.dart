@@ -24,22 +24,23 @@ class HttpUtil {
       options,
       handler,
     ) {
-      print("app request data ${options.data}");
+    //  print("app request data ${options.data}");
 
       return handler.next(options);
     }, onResponse: (
       response,
       handler,
     ) {
-      print("app response data ${response.data}");
-      
+   //   print("app response data ${response.data}");
+
       return handler.next(response);
     }, onError: (
       DioException e,
       handler,
     ) {
-      print("app error data $e");
-           ErrorEntity eInfo = createErrorEntity(e);
+   //   print("app error data $e");
+      ErrorEntity eInfo = createErrorEntity(e);
+      onError(eInfo);
     }));
   }
 
@@ -91,8 +92,8 @@ class ErrorEntity implements Exception {
   }
 }
 
-ErrorEntity createErrorEntity(DioException error){
-  switch(error.type){
+ErrorEntity createErrorEntity(DioException error) {
+  switch (error.type) {
     case DioExceptionType.connectionTimeout:
       return ErrorEntity(code: -1, message: "Connection timed out");
 
@@ -106,16 +107,42 @@ ErrorEntity createErrorEntity(DioException error){
       return ErrorEntity(code: -1, message: "Bad SSL certificates");
 
     case DioExceptionType.badResponse:
-      print(" bad response........");
-      return ErrorEntity(code: -1, message: "Server bad response");
+      switch(error.response!.statusCode){
+        case 400:
+          return ErrorEntity(code: 400, message: "Bad request");
+        case 401:
+          return ErrorEntity(code: 401, message: "Permission denied");
+        case 500:
+          return ErrorEntity(code: 500, message: "Server internal error");
+      }
+      return ErrorEntity(code: error.response!.statusCode!, message: "Server bad response");
 
     case DioExceptionType.cancel:
-    return ErrorEntity(code: -1, message: "Server canceled it");
+      return ErrorEntity(code: -1, message: "Server canceled it");
 
     case DioExceptionType.connectionError:
       return ErrorEntity(code: -1, message: "Connection error");
 
     case DioExceptionType.unknown:
       return ErrorEntity(code: -1, message: "Unknown error");
+  }
+}
+
+void onError(ErrorEntity eInfo){
+  print('error.code -> ${eInfo.code}, error.message -> ${eInfo.message}');
+  switch(eInfo.code){
+    case 400:
+      print("Server syntax error");
+      break;
+    case 401:
+      print("You are denied to continue");
+      break;
+    case 500:
+      print("Server internal error");
+      break;
+    default:
+      print("Unknown error");
+      break;
+
   }
 }
