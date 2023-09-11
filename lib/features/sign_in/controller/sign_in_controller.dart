@@ -65,7 +65,9 @@ class SignInController {
         loginRequestEntity.open_id = id;
         loginRequestEntity.type = 1;
         asyncPostAllData(loginRequestEntity);
-        print('user logged in');
+        if (kDebugMode) {
+          print('user logged in');
+        }
       } else {
         toastInfo('Login error');
       }

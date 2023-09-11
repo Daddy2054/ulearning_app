@@ -31,7 +31,7 @@ class _SignUpState extends ConsumerState<SignUp> {
 
   @override
   Widget build(BuildContext context) {
-    // final regProvider = ref.watch(registerNotifierProvider);
+     final regProvider = ref.watch(registerNotifierProvider);
 
     final loader = ref.watch(appLoaderProvider);
 

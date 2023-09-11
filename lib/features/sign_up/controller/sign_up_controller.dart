@@ -1,13 +1,12 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ulearning_app/common/global_loader/global_loader.dart';
-import 'package:ulearning_app/features/sign_up/provider/register_notifier.dart';
-import 'package:ulearning_app/features/sign_up/repo/sign_up_repo.dart';
 
+import '../../../common/global_loader/global_loader.dart';
 import '../../../common/widgets/popup_messages.dart';
+import '../provider/register_notifier.dart';
+import '../repo/sign_up_repo.dart';
 
 class SignUpController {
   final WidgetRef ref;
@@ -66,8 +65,8 @@ class SignUpController {
         if (credential.user != null) {
           await credential.user?.sendEmailVerification();
           await credential.user?.updateDisplayName(name);
-          //get server photo url
-          //set user photo url
+          String photoUrl = "uploads/default.png";
+          await credential.user?.updatePhotoURL(photoUrl);
           toastInfo(
               'A message has been sent to verify your account.Please open that and email');
           (context).pop();

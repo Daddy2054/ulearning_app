@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../../common/models/entities.dart';
 import '../../../common/services/http_util.dart';
@@ -17,14 +18,13 @@ class SignInRepo {
     return credential;
   }
 
-
-  static Future<UserLoginResponseEntity> login({LoginRequestEntity? params}) async {
-    print("given info ${jsonEncode(params)}");
-  var response = await HttpUtil().post(
-      "api/login",
-      queryParameters: params?.toJson()
-    );
-  return UserLoginResponseEntity.fromJson(response);
+  static Future<UserLoginResponseEntity> login(
+      {LoginRequestEntity? params}) async {
+    if (kDebugMode) {
+      print("given info ${jsonEncode(params)}");
+    }
+    var response =
+        await HttpUtil().post("api/login", queryParameters: params?.toJson());
+    return UserLoginResponseEntity.fromJson(response);
   }
-
 }
