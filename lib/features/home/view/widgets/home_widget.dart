@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ulearning_app/features/sign_in/view/widgets/image_widgets.dart';
 
 import '../../../../common/utils/app_colors.dart';
+import '../../../../common/utils/constants.dart';
 import '../../../../common/utils/image_res.dart';
 import '../../../../common/widgets/app_shadow.dart';
 import '../../../../common/widgets/text_widgets.dart';
@@ -100,7 +101,8 @@ class HelloText extends StatelessWidget {
   }
 }
 
-AppBar homeAppBar() {
+AppBar homeAppBar(WidgetRef ref) {
+  var profileState = ref.watch(homeUserProfileProvider);
   return AppBar(
     //actions: [],
     title: Container(
@@ -116,9 +118,19 @@ AppBar homeAppBar() {
             height: 12.h,
             imagePath: ImageRes.menu,
           ),
-          GestureDetector(
-            child: const AppBoxDecorationImage(),
-          )
+          profileState.when(
+            data: (value) => GestureDetector(
+              child: AppBoxDecorationImage(
+                imagePath: "${AppConstants.SERVER_API_URL}${value.avatar!}",
+              ),
+            ),
+            error: (err, stack) => appImage(
+              width: 18.w,
+              height: 12.h,
+              imagePath: ImageRes.profile,
+            ),
+            loading: () => Container(),
+          ),
         ],
       ),
     ),
