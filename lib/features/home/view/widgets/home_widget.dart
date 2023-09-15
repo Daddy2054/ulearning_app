@@ -217,19 +217,30 @@ class CourseItemGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final courseSate = ref.watch(homeCourseListProvider);
-    return GridView.builder(
-      physics: const ScrollPhysics(),
-      shrinkWrap: true,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 40,
-        mainAxisSpacing: 40,
+    final courseState = ref.watch(homeCourseListProvider);
+
+    return courseState.when(
+      data: (data) => GridView.builder(
+        physics: const ScrollPhysics(),
+        shrinkWrap: true,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 40,
+          mainAxisSpacing: 40,
+        ),
+        itemCount: data?.length,
+        itemBuilder: (_, int index) {
+          return appImage();
+        },
       ),
-      itemCount: 6,
-      itemBuilder: (_, int index) {
-        return appImage();
+      error: (error, stackTrace) {
+        print(error.toString());
+        print(stackTrace.toString());
+        return const Center(child: Text('error loading data'));
       },
+      loading: () => const Center(
+        child: Text('Loading...'),
+      ),
     );
   }
 }
