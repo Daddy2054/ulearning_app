@@ -1,7 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:ulearning_app/features/sign_in/view/widgets/image_widgets.dart';
 
 import '../../../../common/utils/app_colors.dart';
@@ -207,24 +209,27 @@ class HomeMenuBar extends StatelessWidget {
 }
 
 class CourseItemGrid extends StatelessWidget {
-  const CourseItemGrid({super.key});
+  final WidgetRef ref;
+  const CourseItemGrid({
+    Key? key,
+    required this.ref,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GridView.builder(
-        physics: const ScrollPhysics(),
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 40,
-          mainAxisSpacing: 40,
-        ),
-        itemCount: 6,
-        itemBuilder: (_, int index) {
-          return appImage();
-        },
+    final courseSate = ref.watch(homeCourseListProvider);
+    return GridView.builder(
+      physics: const ScrollPhysics(),
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 40,
+        mainAxisSpacing: 40,
       ),
+      itemCount: 6,
+      itemBuilder: (_, int index) {
+        return appImage();
+      },
     );
   }
 }

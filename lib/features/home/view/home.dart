@@ -59,7 +59,7 @@ class _HomeState extends ConsumerState<Home> {
                 controller: _controller,
               ),
               const HomeMenuBar(),
-              const CourseItemGrid(),
+              CourseItemGrid(ref:ref),
             ],
           ),
         ),
