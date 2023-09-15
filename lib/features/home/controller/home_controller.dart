@@ -24,7 +24,8 @@ class HomeUserProfile extends _$HomeUserProfile {
   }
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
+
 class HomeCourseList extends _$HomeCourseList{
 
   Future<List<CourseItem>?>_fetchCourseList() async {
