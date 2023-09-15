@@ -219,27 +219,35 @@ class CourseItemGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final courseState = ref.watch(homeCourseListProvider);
 
-    return courseState.when(
-      data: (data) => GridView.builder(
-        physics: const ScrollPhysics(),
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 40,
-          mainAxisSpacing: 40,
+    return Padding(
+      padding: EdgeInsets.only(top: 18.h),
+      child: courseState.when(
+        data: (data) => GridView.builder(
+          physics: const ScrollPhysics(),
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 15,
+            mainAxisSpacing: 15,
+            childAspectRatio: 1.6,
+          ),
+          itemCount: data?.length,
+          itemBuilder: (_, int index) {
+            return AppBoxDecorationImage(
+              imagePath:
+                  '${AppConstants.IMAGE_UPLOADS_PATH}${data![index].thumbnail!}',
+              fit: BoxFit.fitWidth,
+            );
+          },
         ),
-        itemCount: data?.length,
-        itemBuilder: (_, int index) {
-          return appImage();
+        error: (error, stackTrace) {
+          print(error.toString());
+          print(stackTrace.toString());
+          return const Center(child: Text('error loading data'));
         },
-      ),
-      error: (error, stackTrace) {
-        print(error.toString());
-        print(stackTrace.toString());
-        return const Center(child: Text('error loading data'));
-      },
-      loading: () => const Center(
-        child: Text('Loading...'),
+        loading: () => const Center(
+          child: Text('Loading...'),
+        ),
       ),
     );
   }
