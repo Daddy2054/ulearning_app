@@ -28,7 +28,7 @@ class HomeUserProfile extends _$HomeUserProfile {
 
 class HomeCourseList extends _$HomeCourseList{
 
-  Future<List<CourseItem>?>_fetchCourseList() async {
+  Future<List<CourseItem>?>fetchCourseList() async {
     var result = await CourseAPI.courseList();
     if(result.code==200){
       return result.data;
@@ -38,7 +38,7 @@ class HomeCourseList extends _$HomeCourseList{
 
   @override
   FutureOr<List<CourseItem>?> build() async{
-    return _fetchCourseList();
+    return fetchCourseList();
   }
 
 }
