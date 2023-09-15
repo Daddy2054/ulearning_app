@@ -237,12 +237,13 @@ class CourseItemGrid extends StatelessWidget {
               imagePath:
                   '${AppConstants.IMAGE_UPLOADS_PATH}${data![index].thumbnail!}',
               fit: BoxFit.fitWidth,
+              courseItem: data[index],
             );
           },
         ),
         error: (error, stackTrace) {
-          print(error.toString());
-          print(stackTrace.toString());
+          // print(error.toString());
+          // print(stackTrace.toString());
           return const Center(child: Text('error loading data'));
         },
         loading: () => const Center(

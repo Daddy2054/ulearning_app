@@ -1,6 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'package:ulearning_app/common/models/course_entities.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
+import 'package:ulearning_app/common/widgets/text_widgets.dart';
 
 import '../utils/image_res.dart';
 
@@ -66,12 +70,15 @@ class AppBoxDecorationImage extends StatelessWidget {
   final double height;
   final String imagePath;
   final BoxFit fit;
+  final CourseItem? courseItem;
+
   const AppBoxDecorationImage({
     Key? key,
     this.width = 40,
     this.height = 40,
     this.imagePath = ImageRes.profile,
-    this.fit=BoxFit.fitHeight,
+    this.fit = BoxFit.fitHeight,
+    this.courseItem,
   }) : super(key: key);
 
   @override
@@ -87,6 +94,17 @@ class AppBoxDecorationImage extends StatelessWidget {
             ),
           ),
           borderRadius: BorderRadius.circular(20.w)),
+      child: courseItem == null
+          ? Container()
+          : Column(
+              children: [
+                Container(
+                  child: FadeText(
+                    text: courseItem!.name!,
+                  ),
+                )
+              ],
+            ),
     );
   }
 }
