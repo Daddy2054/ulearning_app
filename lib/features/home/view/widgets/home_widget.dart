@@ -238,6 +238,23 @@ class CourseItemGrid extends StatelessWidget {
                   '${AppConstants.IMAGE_UPLOADS_PATH}${data![index].thumbnail!}',
               fit: BoxFit.fitWidth,
               courseItem: data[index],
+              func: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return Scaffold(
+                        appBar: AppBar(),
+                        body: Center(
+                          child: Text(
+                            data[index].id.toString(),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
             );
           },
         ),
