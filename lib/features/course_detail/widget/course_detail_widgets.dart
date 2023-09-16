@@ -179,11 +179,14 @@ class CourseDetailIncludes extends StatelessWidget {
           SizedBox(
             height: 16.w,
           ),
-          // CourseInfo(
-          //   imagePath: ImageRes.downloadDetail,
-          //   length: courseItem.down_num,
-          //   infoText: "Number of items to download",
-          // ),
+          CourseInfo(
+            imagePath: ImageRes.downloadDetail,
+            length: courseItem.down_num,
+            infoText: "Number of items to download",
+          ),
+          SizedBox(
+            height: 16.w,
+          ),
         ],
       ),
     );
