@@ -31,28 +31,31 @@ class _CourseDetailState extends ConsumerState<CourseDetail> {
         ref.watch(courseDetailControllerProvider(index: args.toInt()));
     return Scaffold(
       appBar: buildGlobalAppbar(title: "Course detail"),
-      body: stateData.when(
-          data: (data) => data == null
-              ? const SizedBox()
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    CourseDetailThumbnail(
-                      courseItem: data,
-                    ),
-                    CourseDetailIconText(
-                      courseItem: data,
-                    ),
-                    CourseDetailDescription(
-                      courseItem: data,
-                    ),
-                      const CourseDetailGoBuyButton(),
-                  ],
-                ),
-          error: (error, traceStack) => const Text("Error loading the data"),
-          loading: () => const Center(
-                child: CircularProgressIndicator(),
-              )),
+      body: SingleChildScrollView(
+        child: stateData.when(
+            data: (data) => data == null
+                ? const SizedBox()
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      CourseDetailThumbnail(
+                        courseItem: data,
+                      ),
+                      CourseDetailIconText(
+                        courseItem: data,
+                      ),
+                      CourseDetailDescription(
+                        courseItem: data,
+                      ),
+                        const CourseDetailGoBuyButton(),
+                        CourseDetailIncludes(courseItem:data),
+                    ],
+                  ),
+            error: (error, traceStack) => const Text("Error loading the data"),
+            loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                )),
+      ),
     );
   }
 }

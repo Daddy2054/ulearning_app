@@ -13,8 +13,10 @@ import '../../../common/widgets/text_widgets.dart';
 class CourseDetailThumbnail extends StatelessWidget {
   final CourseItem courseItem;
 
-  const CourseDetailThumbnail({Key? key, required this.courseItem})
-      : super(key: key);
+  const CourseDetailThumbnail({
+    Key? key,
+    required this.courseItem,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +35,10 @@ class CourseDetailThumbnail extends StatelessWidget {
 class CourseDetailIconText extends StatelessWidget {
   final CourseItem courseItem;
 
-  const CourseDetailIconText({Key? key, required this.courseItem})
-      : super(key: key);
+  const CourseDetailIconText({
+    Key? key,
+    required this.courseItem,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,23 +94,27 @@ class CourseDetailIconText extends StatelessWidget {
 class CourseDetailDescription extends StatelessWidget {
   final CourseItem courseItem;
 
-  const CourseDetailDescription({Key? key, required this.courseItem})
-      : super(key: key);
+  const CourseDetailDescription({
+    Key? key,
+    required this.courseItem,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(left:25, top:15.h),
+      margin: EdgeInsets.only(left: 25, top: 15.h),
       child: Column(
-        
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text16Normal(
-            text: courseItem.name==null?"No name found":courseItem.name!,
+          Text16Normal(
+            text: courseItem.name == null ? "No name found" : courseItem.name!,
             color: AppColors.primaryText,
             textAlign: TextAlign.start,
             fontWeight: FontWeight.bold,
+          ),
+          const SizedBox(
+            height: 10,
           ),
           Text11Normal(
             text: courseItem.description ?? "No description found",
@@ -118,29 +126,32 @@ class CourseDetailDescription extends StatelessWidget {
   }
 }
 
-
 class CourseDetailGoBuyButton extends StatelessWidget {
   const CourseDetailGoBuyButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(top: 20.h),
-        child: const AppButton(buttonName: "Go buy",),
-  );
+      margin: EdgeInsets.only(top: 20.h),
+      child: const AppButton(
+        buttonName: "Go buy",
+      ),
+    );
   }
 }
 
 class CourseDetailIncludes extends StatelessWidget {
   final CourseItem courseItem;
 
-  const CourseDetailIncludes({Key? key, required this.courseItem})
-      : super(key: key);
+  const CourseDetailIncludes({
+    Key? key,
+    required this.courseItem,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20.h),
+      margin: EdgeInsets.only(left: 25, top: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -168,11 +179,11 @@ class CourseDetailIncludes extends StatelessWidget {
           SizedBox(
             height: 16.w,
           ),
-          CourseInfo(
-            imagePath: ImageRes.downloadDetail,
-            length: courseItem.down_num,
-            infoText: "Number of items to download",
-          ),
+          // CourseInfo(
+          //   imagePath: ImageRes.downloadDetail,
+          //   length: courseItem.down_num,
+          //   infoText: "Number of items to download",
+          // ),
         ],
       ),
     );
@@ -184,13 +195,15 @@ class CourseInfo extends StatelessWidget {
   final int? length;
   final String? infoText;
 
-  const CourseInfo(
-      {Key? key, required this.imagePath, this.length, this.infoText = "item"})
-      : super(key: key);
+  const CourseInfo({
+    Key? key,
+    required this.imagePath,
+    this.length,
+    this.infoText = "item",
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -206,7 +219,7 @@ class CourseInfo extends StatelessWidget {
           margin: EdgeInsets.only(left: 10.w),
           child: Text11Normal(
             color: AppColors.primarySecondaryElementText,
-            text: length == null? "0 $infoText" : "$length $infoText",
+            text: length == null ? "0 $infoText" : "$length $infoText",
           ),
         )
       ],
