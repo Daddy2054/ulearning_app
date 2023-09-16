@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ulearning_app/features/home/view/home.dart';
 
-import '../../features/home/course_detail.dart';
+import '../../features/course_detail/view/course_detail.dart';
 import '../../global.dart';
 import '../../features/application/view/application.dart';
 import '../../features/sign_in/view/sign_in.dart';
