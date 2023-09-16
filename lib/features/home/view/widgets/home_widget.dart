@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:ulearning_app/features/sign_in/view/widgets/image_widgets.dart';
 
 import '../../../../common/utils/app_colors.dart';
 import '../../../../common/utils/constants.dart';
 import '../../../../common/utils/image_res.dart';
 import '../../../../common/widgets/app_shadow.dart';
+import '../../../../common/widgets/image_widgets.dart';
 import '../../../../common/widgets/text_widgets.dart';
 import '../../../../global.dart';
 import '../../controller/home_controller.dart';
@@ -115,9 +115,9 @@ AppBar homeAppBar(WidgetRef ref) {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          appImage(
-            width: 18.w,
-            height: 12.h,
+          const AppImage(
+            width: 18,
+            height: 12,
             imagePath: ImageRes.menu,
           ),
           profileState.when(
@@ -126,9 +126,9 @@ AppBar homeAppBar(WidgetRef ref) {
                 imagePath: "${AppConstants.SERVER_API_URL}${value.avatar!}",
               ),
             ),
-            error: (err, stack) => appImage(
-              width: 18.w,
-              height: 12.h,
+            error: (err, stack) => AppImage(
+              width: 18,
+              height: 12,
               imagePath: ImageRes.profile,
             ),
             loading: () => Container(),
@@ -239,7 +239,7 @@ class CourseItemGrid extends StatelessWidget {
                       Navigator.of(context).pushNamed(
                         "/course_detail",
                         arguments: {"id": data[index].id!},
-        //                arguments: {"id": 3},
+                        //                arguments: {"id": 3},
                       );
                     },
                   );

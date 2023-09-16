@@ -4,7 +4,6 @@ import 'package:ulearning_app/common/widgets/text_widgets.dart';
 import '../utils/app_colors.dart';
 
 AppBar buildAppBar({String title = ''}) {
-
   return AppBar(
     title: Text16Normal(text: title, color: AppColors.primaryText),
     centerTitle: true,
@@ -18,8 +17,12 @@ AppBar buildAppBar({String title = ''}) {
   );
 }
 
-AppBar buildGlobalAppbar({String title=""}) {
+AppBar buildGlobalAppbar({String title = ""}) {
   return AppBar(
-    title: Text16Normal(text: title, color: AppColors.primaryText),
+    title: Text16Normal(
+      text: title,
+      color: AppColors.primaryText,
+    ),
+    centerTitle: true,
   );
 }

@@ -1,18 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/utils/app_colors.dart';
 
+import '../utils/app_colors.dart';
 import '../utils/image_res.dart';
 
-Widget appImage(
-    {String imagePath = ImageRes.defaultImg,
-    double width = 16,
-    double height = 16}) {
-  return Image.asset(
-    imagePath.isEmpty ? ImageRes.defaultImg : imagePath,
-    width: width.w,
-    height: height.h,
-  );
+class AppImage extends StatelessWidget {
+  final String imagePath;
+  final double width;
+  final double height;
+  const AppImage({Key? key,  this.imagePath = ImageRes.defaultImg,
+     this.width = 16,
+     this.height = 16}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      imagePath.isEmpty ? ImageRes.defaultImg : imagePath,
+      width: width.w,
+      height: height.h,
+    );
+  }
 }
 
 Widget appImageWithColor(

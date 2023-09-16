@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../features/sign_in/view/widgets/image_widgets.dart';
 import '../utils/app_colors.dart';
 import '../utils/image_res.dart';
 import 'app_shadow.dart';
 import 'app_textfields.dart';
+import 'image_widgets.dart';
 
 Widget searchBar() {
   return Row(
@@ -25,7 +25,7 @@ Widget searchBar() {
           children: [
             Container(
               margin: EdgeInsets.only(left: 17.w),
-              child: appImage(
+              child: const AppImage(
                 imagePath: ImageRes.searchIcon,
               ),
             ),
@@ -53,7 +53,7 @@ Widget searchBar() {
               color: AppColors.primaryElement,
             ),
           ),
-          child: appImage(
+          child: const AppImage(
             imagePath: ImageRes.searchButton,
           ),
         ),

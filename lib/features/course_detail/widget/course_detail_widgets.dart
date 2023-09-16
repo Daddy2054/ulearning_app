@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../common/models/course_entities.dart';
 import '../../../common/utils/app_colors.dart';
 import '../../../common/utils/constants.dart';
+import '../../../common/utils/image_res.dart';
 import '../../../common/widgets/app_shadow.dart';
+import '../../../common/widgets/image_widgets.dart';
 import '../../../common/widgets/text_widgets.dart';
 
 class CourseDetailThumbnail extends StatelessWidget {
@@ -54,7 +56,7 @@ class CourseDetailIconText extends StatelessWidget {
             margin: EdgeInsets.only(left: 30.w),
             child: Row(
               children: [
-//                const AppImage(imagePath: ImageRes.people),
+                const AppImage(imagePath: ImageRes.people),
                 Text11Normal(
                   text: courseItem.follow == null
                       ? "0"
@@ -68,7 +70,7 @@ class CourseDetailIconText extends StatelessWidget {
             margin: EdgeInsets.only(left: 30.w),
             child: Row(
               children: [
-  //              const AppImage(imagePath: ImageRes.star),
+                const AppImage(imagePath: ImageRes.star),
                 Text11Normal(
                   text: courseItem.score == null
                       ? "0"

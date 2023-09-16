@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../features/sign_in/view/widgets/image_widgets.dart';
 import 'app_shadow.dart';
+import 'image_widgets.dart';
 import 'text_widgets.dart';
 
 Widget appTextField({
@@ -31,7 +31,7 @@ Widget appTextField({
             children: [
               Container(
                 margin: EdgeInsets.only(left: 17.w),
-                child: appImage(imagePath: iconName),
+                child: AppImage(imagePath: iconName),
               ),
               appTextFieldOnly(
                 controller: controller,

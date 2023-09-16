@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ulearning_app/common/utils/app_colors.dart';
-import 'package:ulearning_app/common/utils/image_res.dart';
-import 'package:ulearning_app/features/home/view/home.dart';
-import 'package:ulearning_app/features/sign_in/view/widgets/image_widgets.dart';
+
+import '../../../../common/utils/app_colors.dart';
+import '../../../../common/utils/image_res.dart';
+import '../../../../common/widgets/image_widgets.dart';
+import '../../../home/view/home.dart';
 
 var bottomTabs = <BottomNavigationBarItem>[
   BottomNavigationBarItem(
@@ -71,30 +72,29 @@ Widget appScreens({
 }) {
   List<Widget> screens = [
     const Home(),
-
-    Center(
-      child: appImage(
+    const Center(
+      child: AppImage(
         imagePath: ImageRes.search,
         width: 250,
         height: 250,
       ),
     ),
-    Center(
-      child: appImage(
+    const Center(
+      child: AppImage(
         imagePath: ImageRes.play,
         width: 250,
         height: 250,
       ),
     ),
-    Center(
-      child: appImage(
+    const Center(
+      child: AppImage(
         imagePath: ImageRes.message,
         width: 250,
         height: 250,
       ),
     ),
-    Center(
-      child: appImage(
+    const Center(
+      child: AppImage(
         imagePath: ImageRes.profile,
         width: 250,
         height: 250,
