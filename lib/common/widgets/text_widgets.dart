@@ -93,7 +93,7 @@ class Text10Normal extends StatelessWidget {
 }
 
 class Text11Normal extends StatelessWidget {
-  final String text;
+  final String? text;
   final Color color;
 
   const Text11Normal({
@@ -105,7 +105,7 @@ class Text11Normal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      text!,
       textAlign: TextAlign.start,
       style: TextStyle(
         color: color,
