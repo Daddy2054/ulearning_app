@@ -210,63 +210,46 @@ class HomeMenuBar extends StatelessWidget {
 
 class CourseItemGrid extends StatelessWidget {
   final WidgetRef ref;
-  const CourseItemGrid({
-    Key? key,
-    required this.ref,
-  }) : super(key: key);
+
+  const CourseItemGrid({Key? key, required this.ref}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final courseState = ref.watch(homeCourseListProvider);
 
     return Padding(
-      padding: EdgeInsets.only(top: 18.h),
+      padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 0),
       child: courseState.when(
-        data: (data) => GridView.builder(
-          physics: const ScrollPhysics(),
-          shrinkWrap: true,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 15,
-            mainAxisSpacing: 15,
-            childAspectRatio: 1.6,
-          ),
-          itemCount: data?.length,
-          itemBuilder: (_, int index) {
-            return AppBoxDecorationImage(
-              imagePath:
-                  '${AppConstants.IMAGE_UPLOADS_PATH}${data![index].thumbnail!}',
-              fit: BoxFit.fitWidth,
-              courseItem: data[index],
-              func: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return Scaffold(
-                        appBar: AppBar(),
-                        body: Center(
-                          child: Text(
-                            data[index].id.toString(),
-                          ),
-                        ),
+          data: (data) => GridView.builder(
+                physics: const ScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15,
+                    childAspectRatio: 1.6),
+                itemCount: data?.length,
+                itemBuilder: (_, int index) {
+                  return AppBoxDecorationImage(
+                    imagePath:
+                        "${AppConstants.IMAGE_UPLOADS_PATH}${data![index].thumbnail!}",
+                    fit: BoxFit.fitWidth,
+                    courseItem: data[index],
+                    func: () {
+                      Navigator.of(context).pushNamed(
+                        "/course_detail",
+                        arguments: {"id": data[index].id!},
                       );
                     },
-                  ),
-                );
-              },
-            );
+                  );
+                },
+              ),
+          error: (error, stackTrace) {
+            return const Center(child: Text("Error loading data"));
           },
-        ),
-        error: (error, stackTrace) {
-          // print(error.toString());
-          // print(stackTrace.toString());
-          return const Center(child: Text('error loading data'));
-        },
-        loading: () => const Center(
-          child: Text('Loading...'),
-        ),
-      ),
+          loading: () => const Center(
+                child: Text("loading..."),
+              )),
     );
   }
 }
