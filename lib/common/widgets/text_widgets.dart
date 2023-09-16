@@ -46,11 +46,15 @@ class Text16Normal extends StatelessWidget {
 class Text14Normal extends StatelessWidget {
   final String text;
   final Color color;
-  const Text14Normal({
-    Key? key,
-    this.text = "",
-    this.color = AppColors.primaryThirdElementText,
-  }) : super(key: key);
+  final FontWeight? fontWeight;
+
+  const Text14Normal(
+      {Key? key,
+      this.text = "",
+      this.color = AppColors.primaryThirdElementText,
+      this.fontWeight = FontWeight.normal
+      })
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +62,7 @@ class Text14Normal extends StatelessWidget {
       text,
       textAlign: TextAlign.start,
       style: TextStyle(
-        color: color,
-        fontSize: 14.sp,
-        fontWeight: FontWeight.normal,
-      ),
+          color: color, fontSize: 14.sp, fontWeight: fontWeight),
     );
   }
 }

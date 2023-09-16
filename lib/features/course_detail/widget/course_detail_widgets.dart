@@ -6,6 +6,7 @@ import '../../../common/utils/app_colors.dart';
 import '../../../common/utils/constants.dart';
 import '../../../common/utils/image_res.dart';
 import '../../../common/widgets/app_shadow.dart';
+import '../../../common/widgets/button_widgets.dart';
 import '../../../common/widgets/image_widgets.dart';
 import '../../../common/widgets/text_widgets.dart';
 
@@ -113,6 +114,102 @@ class CourseDetailDescription extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+
+class CourseDetailGoBuyButton extends StatelessWidget {
+  const CourseDetailGoBuyButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        margin: EdgeInsets.only(top: 20.h),
+        child: const AppButton(buttonName: "Go buy",),
+  );
+  }
+}
+
+class CourseDetailIncludes extends StatelessWidget {
+  final CourseItem courseItem;
+
+  const CourseDetailIncludes({Key? key, required this.courseItem})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(top: 20.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text14Normal(
+            text: "Course includes",
+            color: AppColors.primaryText,
+            fontWeight: FontWeight.bold,
+          ),
+          SizedBox(
+            height: 12.w,
+          ),
+          CourseInfo(
+            imagePath: ImageRes.videoDetail,
+            length: courseItem.video_len,
+            infoText: "Hours video",
+          ),
+          SizedBox(
+            height: 16.w,
+          ),
+          CourseInfo(
+            imagePath: ImageRes.fileDetail,
+            length: courseItem.lesson_num,
+            infoText: "Number of files",
+          ),
+          SizedBox(
+            height: 16.w,
+          ),
+          CourseInfo(
+            imagePath: ImageRes.downloadDetail,
+            length: courseItem.down_num,
+            infoText: "Number of items to download",
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CourseInfo extends StatelessWidget {
+  final String imagePath;
+  final int? length;
+  final String? infoText;
+
+  const CourseInfo(
+      {Key? key, required this.imagePath, this.length, this.infoText = "item"})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          alignment: Alignment.center,
+          child: AppImage(
+            imagePath: imagePath,
+            width: 30,
+            height: 30,
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(left: 10.w),
+          child: Text11Normal(
+            color: AppColors.primarySecondaryElementText,
+            text: length == null? "0 $infoText" : "$length $infoText",
+          ),
+        )
+      ],
     );
   }
 }

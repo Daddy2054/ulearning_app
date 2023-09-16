@@ -18,6 +18,9 @@ class ImageRes {
   static const String banner2 = '$_imageBase/Image(1).png';
   static const String banner3 = '$_imageBase/Image(2).png';
   static const String menu = '$_imageBase/menu.png';
+  static const String videoDetail = '$_imageBase/video_detail.png';
+  static const String fileDetail = '$_imageBase/file_detail.png';
+  static const String downloadDetail = '$_imageBase/download_detail.png';
 
   static const String reading = 'assets/images/reading.png';
   static const String man = 'assets/images/man.png';

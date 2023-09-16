@@ -10,7 +10,7 @@ import '../../../common/widgets/app_textfields.dart';
 import '../../../common/widgets/text_widgets.dart';
 import '../controller/sign_in_controller.dart';
 import '../provider/sign_in_notifier.dart';
-import 'widgets/button_widgets.dart';
+import '../../../common/widgets/button_widgets.dart';
 import 'widgets/sign_in_widgets.dart';
 
 class SignIn extends ConsumerStatefulWidget {
@@ -95,7 +95,7 @@ class _SignInState extends ConsumerState<SignIn> {
                     ),
                     // app login button
                     Center(
-                      child: appButton(
+                      child: AppButton(
                         buttonName: 'Login',
                         func: () => _controller.handleSignIn(ref),
                       ),
@@ -105,7 +105,7 @@ class _SignInState extends ConsumerState<SignIn> {
                     ),
                     // app register button
                     Center(
-                      child: appButton(
+                      child: AppButton(
                         buttonName: 'Register',
                         isLogin: false,
                         context: context,

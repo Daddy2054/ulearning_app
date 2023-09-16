@@ -46,6 +46,7 @@ class _CourseDetailState extends ConsumerState<CourseDetail> {
                     CourseDetailDescription(
                       courseItem: data,
                     ),
+                      const CourseDetailGoBuyButton(),
                   ],
                 ),
           error: (error, traceStack) => const Text("Error loading the data"),

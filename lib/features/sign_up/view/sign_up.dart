@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ulearning_app/common/utils/app_colors.dart';
 import 'package:ulearning_app/common/utils/image_res.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
-import 'package:ulearning_app/features/sign_in/view/widgets/button_widgets.dart';
+import 'package:ulearning_app/common/widgets/button_widgets.dart';
 import 'package:ulearning_app/features/sign_up/provider/register_notifier.dart';
 import 'package:ulearning_app/features/sign_up/controller/sign_up_controller.dart';
 
@@ -117,7 +117,7 @@ class _SignUpState extends ConsumerState<SignUp> {
 
                       // app register button
                       Center(
-                        child: appButton(
+                        child: AppButton(
                             buttonName: 'Register',
                             isLogin: true,
                             context: context,
