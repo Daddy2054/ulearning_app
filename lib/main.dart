@@ -8,6 +8,7 @@ import 'global.dart';
 
 Future<void> main() async {
   await Global.init();
+  runApp(const ProviderScope(child: MyApp()));
   // HttpUtil().post('api/login', queryParameters: {
   //   'name': 'test1',
   //   'email': 'cabc@a.com',
@@ -18,7 +19,28 @@ Future<void> main() async {
   // });
   // ;
 
-  runApp(const ProviderScope(child: MyApp()));
+  /// lesson 154. Dart callable property with Riverpod implementation
+//   var person = Person('dbestech', 3);
+//   //print(person.name);
+//   var x = person(add: 'xyz');
+//   print(person.address);
+// }
+
+// class Person {
+//   String name;
+//   int age;
+//   String? address;
+//   Person(this.name, this.age, {this.address});
+//   Person call({required String add}) {
+//    // print(address);
+//     address = add;
+//     return this;
+//   }
+// }
+
+//  /// lesson 154. stop testing
+//  ///
+//  ///
 }
 
 final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
