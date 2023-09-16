@@ -20,27 +20,25 @@ Widget text24Normal({
 }
 
 class Text16Normal extends StatelessWidget {
-  final String text;
+  final String? text;
   final Color color;
   final FontWeight fontWeight;
+  final TextAlign? textAlign;
 
   const Text16Normal(
       {Key? key,
       this.text = "",
       this.color = AppColors.primarySecondaryElementText,
-      this.fontWeight = FontWeight.normal})
+      this.fontWeight = FontWeight.normal,
+      this.textAlign = TextAlign.center})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      text!,
       textAlign: TextAlign.center,
-      style: TextStyle(
-        color: color,
-        fontSize: 16.sp,
-        fontWeight: fontWeight,
-      ),
+      style: TextStyle(color: color, fontSize: 16.sp, fontWeight: fontWeight),
     );
   }
 }

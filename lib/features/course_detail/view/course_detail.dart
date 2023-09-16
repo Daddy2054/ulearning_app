@@ -37,8 +37,15 @@ class _CourseDetailState extends ConsumerState<CourseDetail> {
               : Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    CourseDetailThumbnail(courseItem: data,),
-                    CourseDetailIconText(courseItem:data),
+                    CourseDetailThumbnail(
+                      courseItem: data,
+                    ),
+                    CourseDetailIconText(
+                      courseItem: data,
+                    ),
+                    CourseDetailDescription(
+                      courseItem: data,
+                    ),
                   ],
                 ),
           error: (error, traceStack) => const Text("Error loading the data"),

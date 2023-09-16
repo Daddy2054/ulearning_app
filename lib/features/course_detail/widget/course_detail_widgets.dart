@@ -85,3 +85,34 @@ class CourseDetailIconText extends StatelessWidget {
     );
   }
 }
+
+class CourseDetailDescription extends StatelessWidget {
+  final CourseItem courseItem;
+
+  const CourseDetailDescription({Key? key, required this.courseItem})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.centerLeft,
+      margin: EdgeInsets.only(left:25, top:15.h),
+      child: Column(
+        
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+           Text16Normal(
+            text: courseItem.name==null?"No name found":courseItem.name!,
+            color: AppColors.primaryText,
+            textAlign: TextAlign.start,
+            fontWeight: FontWeight.bold,
+          ),
+          Text11Normal(
+            text: courseItem.description ?? "No description found",
+            color: AppColors.primaryThirdElementText,
+          )
+        ],
+      ),
+    );
+  }
+}
