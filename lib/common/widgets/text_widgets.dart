@@ -19,6 +19,29 @@ Widget text24Normal({
   );
 }
 
+class Text13Normal extends StatelessWidget {
+  final String? text;
+  final Color color;
+  final FontWeight fontWeight;
+  final TextAlign? textAlign;
+
+  const Text13Normal(
+      {Key? key,
+      this.text = "",
+      this.color = AppColors.primaryText,
+      this.fontWeight = FontWeight.bold,
+      this.textAlign = TextAlign.start})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text!,
+      textAlign: TextAlign.center,
+      style: TextStyle(color: color, fontSize: 13.sp, fontWeight: fontWeight),
+    );
+  }
+}
 class Text16Normal extends StatelessWidget {
   final String? text;
   final Color color;

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/models/course_entities.dart';
@@ -184,9 +185,9 @@ class CourseDetailIncludes extends StatelessWidget {
             length: courseItem.down_num,
             infoText: "Number of items to download",
           ),
-          SizedBox(
-            height: 16.w,
-          ),
+          // SizedBox(
+          //   height: 16.w,
+          // ),
         ],
       ),
     );
@@ -226,6 +227,79 @@ class CourseInfo extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class LessonInfo extends StatelessWidget {
+  const LessonInfo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text14Normal(
+            text: "Lesson list",
+            color: AppColors.primaryText,
+            fontWeight: FontWeight.bold,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.w,
+            ),
+            width: 325.w,
+            height: 80.h,
+            decoration: appBoxShadow(
+              color: const Color.fromRGBO(255, 255, 255, 1),
+              radius: 10,
+              sR: 2,
+              bR: 3,
+            ),
+            child: InkWell(
+              onTap: () {},
+              child: Row(
+                children: [
+                  AppBoxDecorationImage(
+                    width: 60.w,
+                    height: 60.w,
+                    fit: BoxFit.fill,
+                    imagePath: '${AppConstants.IMAGE_UPLOADS_PATH}default.png',
+                  ),
+                  SizedBox(
+                    width: 8.w,
+                  ),
+                  const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text13Normal(
+                        text: 'This is first lesson',
+                      ),
+                      Text10Normal(
+                        text: 'This is description',
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: Container(),
+                  ),
+                  const AppImage(
+                    imagePath: ImageRes.arrowRight,
+                    width: 24,
+                    height: 24,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
