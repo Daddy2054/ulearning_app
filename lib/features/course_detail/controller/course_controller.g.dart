@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'course_detail_controller.dart';
+part of 'course_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
 String _$courseDetailControllerHash() =>
-    r'3578db28ed9f12d388cc184ffdb56572ba86ebe0';
+    r'43db7446df19d42f7c730ec55e06c897f254caa5';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -101,6 +101,92 @@ class CourseDetailControllerProvider
   @override
   bool operator ==(Object other) {
     return other is CourseDetailControllerProvider && other.index == index;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, index.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+String _$courseLessonListControllerHash() =>
+    r'36f8768130bdace3ba84d156c3e4e12100bd2464';
+typedef CourseLessonListControllerRef
+    = AutoDisposeFutureProviderRef<List<LessonItem>?>;
+
+/// See also [courseLessonListController].
+@ProviderFor(courseLessonListController)
+const courseLessonListControllerProvider = CourseLessonListControllerFamily();
+
+/// See also [courseLessonListController].
+class CourseLessonListControllerFamily
+    extends Family<AsyncValue<List<LessonItem>?>> {
+  /// See also [courseLessonListController].
+  const CourseLessonListControllerFamily();
+
+  /// See also [courseLessonListController].
+  CourseLessonListControllerProvider call({
+    required int index,
+  }) {
+    return CourseLessonListControllerProvider(
+      index: index,
+    );
+  }
+
+  @override
+  CourseLessonListControllerProvider getProviderOverride(
+    covariant CourseLessonListControllerProvider provider,
+  ) {
+    return call(
+      index: provider.index,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'courseLessonListControllerProvider';
+}
+
+/// See also [courseLessonListController].
+class CourseLessonListControllerProvider
+    extends AutoDisposeFutureProvider<List<LessonItem>?> {
+  /// See also [courseLessonListController].
+  CourseLessonListControllerProvider({
+    required this.index,
+  }) : super.internal(
+          (ref) => courseLessonListController(
+            ref,
+            index: index,
+          ),
+          from: courseLessonListControllerProvider,
+          name: r'courseLessonListControllerProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$courseLessonListControllerHash,
+          dependencies: CourseLessonListControllerFamily._dependencies,
+          allTransitiveDependencies:
+              CourseLessonListControllerFamily._allTransitiveDependencies,
+        );
+
+  final int index;
+
+  @override
+  bool operator ==(Object other) {
+    return other is CourseLessonListControllerProvider && other.index == index;
   }
 
   @override

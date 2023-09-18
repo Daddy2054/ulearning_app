@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/models/course_entities.dart';
+import '../../../common/models/lesson_entities.dart';
 import '../../../common/utils/app_colors.dart';
 import '../../../common/utils/constants.dart';
 import '../../../common/utils/image_res.dart';
@@ -232,7 +233,8 @@ class CourseInfo extends StatelessWidget {
 }
 
 class LessonInfo extends StatelessWidget {
-  const LessonInfo({super.key});
+  final List<LessonItem> lessonData;
+  const LessonInfo({Key? key, required this.lessonData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -240,64 +242,74 @@ class LessonInfo extends StatelessWidget {
       margin: const EdgeInsets.only(top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        //mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text14Normal(
-            text: "Lesson list",
-            color: AppColors.primaryText,
-            fontWeight: FontWeight.bold,
+          lessonData.isNotEmpty
+              ? const Text14Normal(
+                  text: "Lesson list",
+                  color: AppColors.primaryText,
+                  fontWeight: FontWeight.bold,
+                )
+              : const Text14Normal(
+                  text: "Lesson list is empty",
+                  color: AppColors.primaryText,
+                  fontWeight: FontWeight.bold,
+                ),
+          SizedBox(
+            height: 10.h,
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 10.w,
-            ),
-            width: 325.w,
-            height: 80.h,
-            decoration: appBoxShadow(
-              color: const Color.fromRGBO(255, 255, 255, 1),
-              radius: 10,
-              sR: 2,
-              bR: 3,
-            ),
-            child: InkWell(
-              onTap: () {},
-              child: Row(
-                children: [
-                  AppBoxDecorationImage(
-                    width: 60.w,
-                    height: 60.w,
-                    fit: BoxFit.fill,
-                    imagePath: '${AppConstants.IMAGE_UPLOADS_PATH}default.png',
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: lessonData.length,
+              itemBuilder: (_, index) {
+                return Container(
+                  margin: EdgeInsets.only(top: 10.h),
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  width: 325.w,
+                  height: 80.h,
+                  decoration: appBoxShadow(
+                      radius: 10,
+                      sR: 2,
+                      bR: 3,
+                      color: const Color.fromRGBO(255, 255, 255, 1)),
+                  child: InkWell(
+                    onTap: () {},
+                    child: Row(
+                      //crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AppBoxDecorationImage(
+                          width: 60.w,
+                          height: 60.w,
+                          imagePath:
+                              "${AppConstants.IMAGE_UPLOADS_PATH}${lessonData[index].thumbnail}",
+                          fit: BoxFit.fill,
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text13Normal(text: lessonData[index].name),
+                              Expanded(
+                                  child: Text10Normal(
+                                      text: lessonData[index].description!)),
+                            ],
+                          ),
+                        ),
+                        // Expanded(child:Container()),
+                        const AppImage(
+                          imagePath: ImageRes.arrowRight,
+                          width: 24,
+                          height: 24,
+                        )
+                      ],
+                    ),
                   ),
-                  SizedBox(
-                    width: 8.w,
-                  ),
-                  const Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text13Normal(
-                        text: 'This is first lesson',
-                      ),
-                      Text10Normal(
-                        text: 'This is description',
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                    child: Container(),
-                  ),
-                  const AppImage(
-                    imagePath: ImageRes.arrowRight,
-                    width: 24,
-                    height: 24,
-                  ),
-                ],
-              ),
-            ),
-          ),
+                );
+              })
         ],
       ),
     );
