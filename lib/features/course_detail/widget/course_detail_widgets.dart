@@ -105,7 +105,7 @@ class CourseDetailDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(left: 25, top: 15.h),
+      margin: EdgeInsets.only(left: 0, top: 15.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -153,7 +153,7 @@ class CourseDetailIncludes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 25, top: 20.h),
+      margin: EdgeInsets.only(left: 0, top: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -281,22 +281,26 @@ class LessonInfo extends StatelessWidget {
                           width: 60.w,
                           height: 60.w,
                           imagePath:
-                              "${AppConstants.IMAGE_UPLOADS_PATH}${lessonData[index].thumbnail}",
+//                              "${AppConstants.IMAGE_UPLOADS_PATH}${lessonData[index].thumbnail}",
+                              "${AppConstants.IMAGE_UPLOADS_PATH}default.png",
                           fit: BoxFit.fill,
                         ),
                         SizedBox(
                           width: 8.w,
                         ),
                         Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text13Normal(text: lessonData[index].name),
-                              Expanded(
-                                  child: Text10Normal(
-                                      text: lessonData[index].description!)),
-                            ],
+                          child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical:5.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text13Normal(text: lessonData[index].name),
+                                Expanded(
+                                    child: Text10Normal(
+                                        text: lessonData[index].description!)),
+                              ],
+                            ),
                           ),
                         ),
                         // Expanded(child:Container()),
