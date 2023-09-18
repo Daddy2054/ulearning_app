@@ -273,7 +273,10 @@ class LessonInfo extends StatelessWidget {
                       bR: 3,
                       color: const Color.fromRGBO(255, 255, 255, 1)),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pushNamed('/lesson_detail',
+                          arguments: {'id': lessonData[index].id!});
+                    },
                     child: Row(
                       //crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -290,7 +293,7 @@ class LessonInfo extends StatelessWidget {
                         ),
                         Expanded(
                           child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical:5.0),
+                            padding: const EdgeInsets.symmetric(vertical: 5.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,

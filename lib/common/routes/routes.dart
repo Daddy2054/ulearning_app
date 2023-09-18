@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ulearning_app/features/home/view/home.dart';
+import 'package:ulearning_app/features/lesson_detail/view/lesson_detail.dart';
 
 import '../../features/course_detail/view/course_detail.dart';
 import '../../global.dart';
@@ -19,6 +20,7 @@ class AppPages {
       RouteEntity(path: AppRoutesNames.APPLICATION, page: const Application()),
       RouteEntity(path: AppRoutesNames.HOME, page: const Home()),
       RouteEntity(path: AppRoutesNames.COURSE_DETAIL, page: const CourseDetail()),
+      RouteEntity(path: AppRoutesNames.LESSON_DETAIL, page: const LessonDetail()),
     ];
   }
 
