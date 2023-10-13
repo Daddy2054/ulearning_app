@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../common/models/course_entities.dart';
@@ -15,7 +16,9 @@ Future<CourseItem?> courseDetailController(CourseDetailControllerRef ref,
   if (response.code == 200) {
     return response.data;
   } else {
-    print('request failed ${response.code}');
+    if (kDebugMode) {
+      print('request failed ${response.code}');
+    }
   }
   return null;
 }
@@ -32,7 +35,9 @@ Future<List<LessonItem>?> courseLessonListController(
   if (response.code == 200) {
     return response.data;
   } else {
-    print('request failed ${response.code}');
+    if (kDebugMode) {
+      print('request failed ${response.code}');
+    }
   }
   return null;
 }

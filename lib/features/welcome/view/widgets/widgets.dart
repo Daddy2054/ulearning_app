@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ulearning_app/common/widgets/app_shadow.dart';
 import 'package:ulearning_app/common/widgets/text_widgets.dart';
@@ -68,7 +69,9 @@ Widget _nextButton(
   return GestureDetector(
     onTap: () {
       bool deviceFirstTime = Global.storageService.getDeviceFirstOpen();
-      print(deviceFirstTime);
+      if (kDebugMode) {
+        print(deviceFirstTime);
+      }
 
       if (index < 3) {
         controller.animateToPage(

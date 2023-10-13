@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +16,7 @@ class CourseDetail extends ConsumerStatefulWidget {
 }
 
 class _CourseDetailState extends ConsumerState<CourseDetail> {
+  //late var args;
   late var args;
 
   @override
@@ -22,7 +25,6 @@ class _CourseDetailState extends ConsumerState<CourseDetail> {
 
     args = id["id"];
 
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
   }
 

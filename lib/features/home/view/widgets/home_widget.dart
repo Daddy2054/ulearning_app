@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 import '../../../../common/utils/app_colors.dart';
 import '../../../../common/utils/constants.dart';
 import '../../../../common/utils/image_res.dart';
@@ -126,7 +125,7 @@ AppBar homeAppBar(WidgetRef ref) {
                 imagePath: "${AppConstants.SERVER_API_URL}${value.avatar!}",
               ),
             ),
-            error: (err, stack) => AppImage(
+            error: (err, stack) => const AppImage(
               width: 18,
               height: 12,
               imagePath: ImageRes.profile,

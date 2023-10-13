@@ -53,7 +53,7 @@ class SignUpController {
 //show the loading icon
     ref.read(appLoaderProvider.notifier).setLoaderValue(true);
     Future.delayed(const Duration(seconds: 2), () async {
-      var context = Navigator.of(ref.context);
+      var context = Navigator.of(ref.context);    // how to jump async gap step 1
       try {
         final credential = await SignUpRep.firebaseSignUp(
           email,
@@ -69,7 +69,7 @@ class SignUpController {
           await credential.user?.updatePhotoURL(photoUrl);
           toastInfo(
               'A message has been sent to verify your account.Please open that and email');
-          (context).pop();
+          (context).pop();   // how to jump async gap step 2
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
