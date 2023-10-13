@@ -45,6 +45,7 @@ dependencies:
   cloud_firestore: ^4.9.1
   shared_preferences: ^2.2.1
   dio: ^5.3.2
+  video_player: ^2.7.2
 
 dev_dependencies:
   flutter_test:

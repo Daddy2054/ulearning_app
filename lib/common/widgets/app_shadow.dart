@@ -130,3 +130,6 @@ class AppBoxDecorationImage extends StatelessWidget {
     );
   }
 }
+BoxDecoration networkImageDecoration({required String imagePath}) {
+  return BoxDecoration(image: DecorationImage(image: NetworkImage(imagePath)));
+}

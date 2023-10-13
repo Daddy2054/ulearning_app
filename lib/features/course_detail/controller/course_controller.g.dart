@@ -7,7 +7,7 @@ part of 'course_controller.dart';
 // **************************************************************************
 
 String _$courseDetailControllerHash() =>
-    r'43db7446df19d42f7c730ec55e06c897f254caa5';
+    r'8ff93012422f8f2a76ea2234d3214c646afbc838';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -113,7 +113,7 @@ class CourseDetailControllerProvider
 }
 
 String _$courseLessonListControllerHash() =>
-    r'36f8768130bdace3ba84d156c3e4e12100bd2464';
+    r'ea1d6132aa6b602e083d84dd5c139a645d78260f';
 typedef CourseLessonListControllerRef
     = AutoDisposeFutureProviderRef<List<LessonItem>?>;
 

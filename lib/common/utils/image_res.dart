@@ -11,6 +11,9 @@ class ImageRes {
   static const String home = '$_imageBase/home.png';
   static const String search = '$_imageBase/search2.png';
   static const String play = '$_imageBase/play-circle.png';
+  static const String pause = '$_imageBase/pause.png';
+  static const String left = '$_imageBase/rewind-left.png';
+  static const String right = '$_imageBase/rewind-right.png';
   static const String message = '$_imageBase/message-circle.png';
   static const String profile = '$_imageBase/person2.png';
   static const String searchIcon = '$_imageBase/search.png';
