@@ -5,9 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../../common/utils/constants.dart';
 import '../../../common/utils/image_res.dart';
-import '../../../common/widgets/app_shadow.dart';
 import '../../../common/widgets/image_widgets.dart';
 import '../controller/lesson_controller.dart';
 class LessonDetail extends ConsumerStatefulWidget {
@@ -36,7 +34,7 @@ class _LessonDetailState extends ConsumerState<LessonDetail> {
 
   @override
   Widget build(BuildContext context) {
-    // var lessonDetail = ref.watch(lessonDetailControllerProvider(index: args.toInt()));
+  //   var lessonDetail = ref.watch(lessonDetailControllerProvider(index: args.toInt()));
     var lessonData = ref.watch(lessonDataControllerProvider);
     return Scaffold(
         appBar: AppBar(),

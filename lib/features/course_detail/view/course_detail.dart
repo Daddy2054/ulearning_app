@@ -28,7 +28,7 @@ class _CourseDetailState extends ConsumerState<CourseDetail> {
     super.didChangeDependencies();
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
     var courseData =
         ref.watch(courseDetailControllerProvider(index: args.toInt()));
@@ -60,23 +60,23 @@ class _CourseDetailState extends ConsumerState<CourseDetail> {
                   error: (error, traceStack) =>
                       const Text("Error loading the course data"),
                   loading: () => SizedBox(
-                    height: 500.h,
-                    child: const Center(
+                        height: 500.h,
+                        child: const Center(
                           child: CircularProgressIndicator(),
                         ),
-                  )),
+                      )),
               lessonData.when(
                   data: (data) => data == null
                       ? const SizedBox()
-                      : LessonInfo(lessonData:data),
+                      : LessonInfo(lessonData: data, ref: ref),
                   error: (error, traceStack) =>
-                  const Text("Error loading the lesson data"),
+                      const Text("Error loading the lesson data"),
                   loading: () => SizedBox(
-                    height: 500.h,
-                    child: const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  )),
+                        height: 500.h,
+                        child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      )),
             ],
           ),
         ),

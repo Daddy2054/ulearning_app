@@ -51,7 +51,10 @@ class LessonDetailResponseEntity {
         data: json["data"] == null
             ? []
             : List<LessonVideoItem>.from(
-                json["data"].map((x) => LessonVideoItem.fromJson(x))),
+                json["data"].map(
+                  (x) => LessonVideoItem.fromJson(x),
+                ),
+              ),
       );
 }
 
