@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:video_player/video_player.dart';
+
 import '../../../common/models/lesson_entities.dart';
 import '../../../common/utils/constants.dart';
 import '../repo/lesson_repo.dart';
-import 'package:video_player/video_player.dart';
 
 part 'lesson_controller.g.dart';
 
@@ -17,14 +18,15 @@ Future<void> lessonDetailController(LessonDetailControllerRef ref,
   final response =
       await LessonRepo.courseLessonDetail(params: lessonRequestEntity);
 
-      //breakpoint here invoke exception
+  //breakpoint here invoke exception
 //       Unhandled exception:
 // FormatException: Invalid radix-10 number (at character 1)
   if (response.code == 200) {
-    var url =
-        "${AppConstants.IMAGE_UPLOADS_PATH}${response.data!.elementAt(0).url!}";
-     //"${AppConstants.IMAGE_UPLOADS_PATH}${response['data']!.elementAt(0)['video'].elementAt(0)['url']!}";
-    print('my video url is $url');
+     var url =
+    "${AppConstants.IMAGE_UPLOADS_PATH}${response.data!.elementAt(0).url}";
+    // var url =
+    //     "${AppConstants.IMAGE_UPLOADS_PATH}files/68509df06cfa14586030a08adf0d01fa.mp4";
+    // print('my video url is $url');
 
     videoPlayerController = VideoPlayerController.networkUrl(url as Uri);
 
